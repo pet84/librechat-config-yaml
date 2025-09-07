@@ -6,9 +6,8 @@ registration:
   socialLogins:
     - "discord"
     - "facebook"
-    - "github"
     - "google"
-    - "openid"
+    
 
 endpoints:
   custom:
