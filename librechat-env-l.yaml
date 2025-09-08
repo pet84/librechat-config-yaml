@@ -1,19 +1,27 @@
 version: 1.2.8
 cache: true
+
 endpoints:
   custom:
-    - name: "OpenRouter"
-      apiKey: "${OPENROUTER_KEY}"
-      baseURL: "https://openrouter.ai/api/v1"
+    # ----------------------------------------
+    # ZDE JE PROVEDENA ZMĚNA
+    # Původní "OpenRouter" byl nahrazen za "OpenAI"
+    # ----------------------------------------
+    - name: "OpenAI"
+      apiKey: "${OPENAI_API_KEY}"
+      baseURL: "https://api.openai.com/v1"
       models:
-        default: ["gpt-3.5-turbo"]
-        fetch: true
+        "gpt-4o":
+          modelDisplayLabel: "ChatGPT 4o"
+        "gpt-4o-mini":
+          modelDisplayLabel: "ChatGPT 4o Mini"
+      fetch: false
       titleConvo: true
-      titleModel: "current_model"
-      summarize: false
-      summaryModel: "current_model"
-      forcePrompt: false
-      modelDisplayLabel: "OpenRouter"
+      titleModel: "gpt-4o-mini"
+
+    # ----------------------------------------
+    # Tato sekce zůstala beze změny jako funkční základ
+    # ----------------------------------------
     - name: "Ollama"
       apiKey: "ollama"
       baseURL: "http://host.docker.internal:11434/v1/"
