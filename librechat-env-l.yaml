@@ -37,7 +37,7 @@ endpoints:
           modelDisplayLabel: "Gemini 2.5 Flash Lite"
 
     # ----------------------------------------
-    # Anthropic Modely
+    # Anthropic Modely (ZDE BYLA CHYBA OPRAVENA)
     # ----------------------------------------
     - name: "Anthropic"
       apiKey: "${ANTHROPIC_API_KEY}" # Odkazuje na vaši proměnnou ANTHROPIC_API_KEY
