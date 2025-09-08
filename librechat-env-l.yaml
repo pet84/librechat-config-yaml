@@ -73,3 +73,14 @@ endpoints:
         - claude-3-haiku-20240307
     fetch: false
     modelDisplayLabel: "Anthropic Claude"
+
+speech:
+  stt:
+    openai:
+      apiKey: "${STT_API_KEY}"
+      model: whisper-1
+  tts:
+    openai:
+      apiKey: "${TTS_API_KEY}"
+      model: gpt-4o-mini-tts
+      voice: alloy
