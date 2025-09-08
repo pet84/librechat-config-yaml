@@ -11,10 +11,10 @@ endpoints:
       apiKey: "${OPENAI_API_KEY}"
       baseURL: "https://api.openai.com/v1"
       models:
-        "gpt-4o":
-          modelDisplayLabel: "ChatGPT 4o"
-        "gpt-4o-mini":
-          modelDisplayLabel: "ChatGPT 4o Mini"
+          "gpt-4o": # <-- TENTO ŘÁDEK MÁ ŠPATNÉ ODSAZENÍ
+            modelDisplayLabel: "ChatGPT 4o"
+          "gpt-4o-mini": # <-- I TENTO ŘÁDEK MÁ ŠPATNÉ ODSAZENÍ
+            modelDisplayLabel: "ChatGPT 4o Mini"
       fetch: false
       titleConvo: true
       titleModel: "gpt-4o-mini"
