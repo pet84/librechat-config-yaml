@@ -31,13 +31,6 @@ registration:
   socialLogins: ["google"]
 
 endpoints:
-  assistants:
-    supportedIds:
-      - "asst_MLMO60C5sEqtNLFbUVAc6fy6"
-    titleConvo: true
-    titleModel: "gpt-4o-mini"
-    modelDisplayLabel: "⚡ Airis"
-
   custom:
     - name: "OpenAI"
       apiKey: "${OPENAI_API_KEY}"
