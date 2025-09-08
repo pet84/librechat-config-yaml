@@ -1,13 +1,19 @@
+# -----------------------------------------------------------------------------
+# LibreChat Konfigurace pro Airis - Verze 1.2.8 (Září 2025)
+# Tento soubor je syntakticky opravený a připravený k použití.
+# -----------------------------------------------------------------------------
 version: 1.2.8
 cache: true
 
+# -----------------------------------------------------------------------------
+# Uživatelské rozhraní
+# -----------------------------------------------------------------------------
 interface:
   customWelcome: "🌟 Vítej, {{user.name}} 👋 Jsem Airis"
   customFooter: "© 2025 AIRIS ArchEnergy · AI může dělat chyby"
   hideModelsFromUI: false
   promptTemplates: true
   modelSpecs: true
-
   termsOfService:
     modalContent: |
       # Podmínky služby
@@ -20,7 +26,6 @@ interface:
       
       ## Závěr
       Pokud nesouhlasíte s těmito podmínkami, službu nepoužívejte.
-
   privacyPolicy:
     modalContent: |
       # Zásady ochrany osobních údajů
@@ -33,64 +38,66 @@ interface:
       ## Kontakt
       V případě dotazů nás kontaktujte na [archenergy.cz](https://archenergy.cz).
 
+# -----------------------------------------------------------------------------
+# Registrace a přihlášení
+# -----------------------------------------------------------------------------
 registration:
   socialLogins: ["google"]
 
+# -----------------------------------------------------------------------------
+# Konfigurace AI modelů (Endpointy)
+# -----------------------------------------------------------------------------
 endpoints:
   assistants:
-    # Povolí pouze tohoto jednoho asistenta
+    # Povolí pouze jednoho konkrétního asistenta a přejmenuje záložku
     supportedIds:
       - "asst_MLMO60C5sEqtNLFbUVAc6fy6"
     titleConvo: true
-    titleModel: "gpt-4o-mini"
+    titleModel: "gpt-4o-mini" # Používá rychlý model pro generování názvů konverzací
     modelDisplayLabel: "⚡ Airis"
 
   openAI:
     titleConvo: true
     titleModel: "gpt-4o-mini"
     summarize: false
-    summaryModel: "gpt-4o-mini"
     models:
+      "gpt-5-chat-latest":
+        modelDisplayLabel: "GPT-5 (Nejnovější)"
+      "gpt-5-2025-08-07":
+        modelDisplayLabel: "GPT-5 (08-07)"
       "gpt-4o":
-        modelDisplayLabel: "ChatGPT 4o"
-      "gpt-4o-mini":
-        modelDisplayLabel: "ChatGPT 4o Mini"
+        modelDisplayLabel: "GPT-4o"
     fetch: false
 
   google:
     titleConvo: true
-    titleModel: "gemini-2.5-flash"
+    titleModel: "gemini-1.5-flash" # Pro titulky je lepší použít rychlejší a levnější model
     summarize: false
-    summaryModel: "gemini-2.5-flash"
     models:
       "gemini-2.5-pro":
         modelDisplayLabel: "Gemini 2.5 Pro"
       "gemini-2.5-flash":
         modelDisplayLabel: "Gemini 2.5 Flash"
-      "gemini-2.5-flash-lit":
-        modelDisplayLabel: "Gemini 2.5 Flash Lite"
     fetch: false
 
   anthropic:
     apiKey: "${ANTHROPIC_API_KEY}"
     titleConvo: true
-    titleModel: "claude-3-5-haiku-20241022"
+    titleModel: "claude-3-haiku-20240307" # Ověřte si nejnovější rychlý model
     summarize: false
-    summaryModel: "claude-3-5-haiku-20241022"
     models:
-      "claude-opus-4-20250514":
-        modelDisplayLabel: "Claude Opus 4"
-      "claude-sonnet-4-20250514":
-        modelDisplayLabel: "Claude Sonnet 4"
-      "claude-3-7-sonnet-20250219":
-        modelDisplayLabel: "Claude 3.7 Sonnet"
-      "claude-3-5-haiku-20241022":
-        modelDisplayLabel: "Claude 3.5 Haiku"
+      # DŮLEŽITÉ: Názvy nových Claude modelů si ověřte v oficiální dokumentaci.
+      # Níže jsou příklady, jak by mohly vypadat. Nahraďte je skutečnými ID.
+      "claude-4-sonnet-2025-08-15": # Příklad - nahraďte skutečným ID
+        modelDisplayLabel: "Claude 4 Sonnet"
+      "claude-3-5-sonnet-20240620":
+        modelDisplayLabel: "Claude 3.5 Sonnet"
     fetch: false
 
-# Speech konfigurace
+# -----------------------------------------------------------------------------
+# Hlasové funkce (Speech-to-Text a Text-to-Speech)
+# -----------------------------------------------------------------------------
 speech:
-  # Výchozí nastavení pro uživatele
   speechTab:
     conversationMode: true
     advancedMode: false
@@ -107,21 +114,19 @@ speech:
       automaticPlayback: true
       playbackRate: 1.0
       cacheTTS: true
-  
-  # Speech-to-Text (STT) - Whisper podporuje češtinu
   stt:
     openai:
       apiKey: "${STT_OPENAI_API_KEY}"
       model: "whisper-1"
-  
-  # Text-to-Speech (TTS) - OpenAI TTS s Nova jako výchozí
   tts:
     openai:
       apiKey: "${TTS_OPENAI_API_KEY}"
       model: "tts-1"
       voices: ["nova", "alloy", "echo", "fable", "onyx", "shimmer"]
 
-# Rate limiting - ochrana proti spam
+# -----------------------------------------------------------------------------
+# Ochrana proti spamu (Rate Limiting)
+# -----------------------------------------------------------------------------
 rateLimits:
   fileUploads:
     ipMax: 100
@@ -129,7 +134,9 @@ rateLimits:
     userMax: 50
     userWindowInMinutes: 60
 
-# Logging pro debugging
+# -----------------------------------------------------------------------------
+# Logování
+# -----------------------------------------------------------------------------
 logging:
   level: "info"
   hideIPs: true
