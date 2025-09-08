@@ -3,35 +3,46 @@ cache: true
 
 endpoints:
   custom:
-    # ----------------------------------------
-    # ZDE JE PROVEDENA ZMĚNA
-    # Původní "OpenRouter" byl nahrazen za "OpenAI"
-    # ----------------------------------------
+    - name: "OpenRouter"
+      apiKey: "${OPENROUTER_KEY}"
+      baseURL: "https://openrouter.ai/api/v1"
+      models:
+        # necháš fetch: true a LibreChat si stáhne seznam modelů z OpenRouteru
+        # pokud chceš předvolit výchozí model, můžeš ho tady zapsat
+        default: ["openai/gpt-4o-mini"]
+        fetch: true
+      titleConvo: true
+      titleModel: "current_model"
+      summarize: false
+      summaryModel: "current_model"
+      forcePrompt: false
+      modelDisplayLabel: "OpenRouter"
+
     - name: "OpenAI"
       apiKey: "${OPENAI_API_KEY}"
       baseURL: "https://api.openai.com/v1"
       models:
-          "gpt-4o": # <-- TENTO ŘÁDEK MÁ ŠPATNÉ ODSAZENÍ
+        # tady používáme pevný seznam (fetch: false) a vlastní popisky
+        default: ["gpt-4o-mini"]
+        fetch: false
+        list:
+          - id: "gpt-4o"
             modelDisplayLabel: "ChatGPT 4o"
-          "gpt-4o-mini": # <-- I TENTO ŘÁDEK MÁ ŠPATNÉ ODSAZENÍ
+          - id: "gpt-4o-mini"
             modelDisplayLabel: "ChatGPT 4o Mini"
-      fetch: false
       titleConvo: true
       titleModel: "gpt-4o-mini"
+      summarize: false
+      summaryModel: "gpt-4o-mini"
+      forcePrompt: false
+      modelDisplayLabel: "OpenAI"
 
-    # ----------------------------------------
-    # Tato sekce zůstala beze změny jako funkční základ
-    # ----------------------------------------
     - name: "Ollama"
       apiKey: "ollama"
       baseURL: "http://host.docker.internal:11434/v1/"
       models:
-        default: [
-          "llama3:latest",
-          "command-r",
-          "mixtral",
-          "phi3"
-          ]
-        fetch: true # fetching list of models is not supported
-      titleConvo: true
-      titleModel: "current_model"
+        # můžeš nechat fetch: true, LibreChat si načte dostupné lokální modely
+        # nebo předvolit vlastní default:
+        default: ["llama3.1"]
+        fetch: true
+      modelDisplayLabel: "Ollama"
