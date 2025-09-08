@@ -46,37 +46,6 @@ endpoints:
       titleModel: "gpt-4o-mini"
       summarize: false
       models:
-        "gpt-5-chat-latest":
-          modelDisplayLabel: "GPT-5 (Nejnovější)"
-        "gpt-4o":
-          modelDisplayLabel: "GPT-4o"
         "gpt-4o-mini":
           modelDisplayLabel: "GPT-4o Mini"
       fetch: false
-
-    - name: "Google"
-      apiKey: "${GOOGLE_KEY}"
-      baseURL: "https://generativelanguage.googleapis.com/v1beta"
-      titleConvo: true
-      titleModel: "models/gemini-1.5-flash-latest"
-      summarize: false
-      models:
-        "models/gemini-1.5-pro-latest":
-          modelDisplayLabel: "Gemini 1.5 Pro"
-        "models/gemini-1.5-flash-latest":
-          modelDisplayLabel: "Gemini 1.5 Flash"
-
-    - name: "Anthropic"
-      apiKey: "${ANTHROPIC_API_KEY}"
-      baseURL: "https://api.anthropic.com/v1"
-      headers:
-        "x-api-key": "${ANTHROPIC_API_KEY}"
-        "anthropic-version": "2023-06-01"
-      titleConvo: true
-      titleModel: "claude-3-haiku-20240307"
-      summarize: false
-      models:
-        "claude-3-5-sonnet-20240620":
-          modelDisplayLabel: "Claude 3.5 Sonnet"
-        "claude-3-opus-20240229":
-          modelDisplayLabel: "Claude 3 Opus"
