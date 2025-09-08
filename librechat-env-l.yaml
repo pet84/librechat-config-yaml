@@ -43,10 +43,12 @@ endpoints:
     summaryModel: gpt-4o-mini
     models:
       default:
-        - gpt-4o
-        - gpt-4o-mini
+        - id: gpt-4o
+          label: "ChatGPT 4o"
+        - id: gpt-4o-mini
+          label: "ChatGPT 4o Mini"
     fetch: false
-    modelDisplayLabel: "OpenAI"
+    modelDisplayLabel: "ChatGPT"
 
   google:
     titleConvo: true
@@ -55,9 +57,12 @@ endpoints:
     summaryModel: gemini-2.5-flash
     models:
       default:
-        - gemini-2.5-pro
-        - gemini-2.5-flash
-        - gemini-2.5-flash-lite
+        - id: gemini-2.5-pro
+          label: "Gemini 2.5 Pro"
+        - id: gemini-2.5-flash
+          label: "Gemini 2.5 Flash"
+        - id: gemini-2.5-flash-lite
+          label: "Gemini 2.5 Flash Lite"
     fetch: false
     modelDisplayLabel: "Google Gemini"
 
@@ -68,19 +73,20 @@ endpoints:
     summaryModel: claude-3-sonnet-20240229
     models:
       default:
-        - claude-3-opus-20240229
-        - claude-3-sonnet-20240229
-        - claude-3-haiku-20240307
+        - id: claude-3-opus-20240229
+          label: "Claude Opus"
+        - id: claude-3-sonnet-20240229
+          label: "Claude Sonnet"
+        - id: claude-3-haiku-20240307
+          label: "Claude Haiku"
     fetch: false
     modelDisplayLabel: "Anthropic Claude"
 
 speech:
   stt:
-    openai:
-      apiKey: "${STT_API_KEY}"
-      model: whisper-1
+    browser: true   # nejlepší pro češtinu
   tts:
     openai:
       apiKey: "${TTS_API_KEY}"
-      model: gpt-4o-mini-tts
-      voice: alloy
+      model: tts-1     # přepni na tts-1-hd pro vyšší kvalitu
+      voice: nova
