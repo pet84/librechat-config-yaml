@@ -1,35 +1,6 @@
 version: 1.2.8
 cache: true
 
-interface:
-  customWelcome: "🌟 Vítej, {{user.name}} 👋 Jsem Airis"
-  customFooter: "© 2025 AIRIS ArchEnergy · AI může dělat chyby"
-  hideModelsFromUI: false
-  promptTemplates: true
-  modelSpecs: true
-  termsOfService:
-    modalContent: |
-      # Podmínky služby
-      ## Úvod
-      Vítejte v AIRIS ArchEnergy Chat! Používáním této služby souhlasíte s následujícími pravidly:
-      - Služba je poskytována „tak jak je".
-      - AIRIS ArchEnergy nenese odpovědnost za rozhodnutí učiněná na základě výstupů AI.
-      - Uživatel souhlasí, že AI může dělat chyby.
-      ## Závěr
-      Pokud nesouhlasíte s těmito podmínkami, službu nepoužívejte.
-  privacyPolicy:
-    modalContent: |
-      # Zásady ochrany osobních údajů
-      ## Ochrana dat
-      Vaše soukromí je pro nás důležité. Data konverzací nejsou sdílena s třetími stranami mimo poskytovatele AI API.
-      - Osobní údaje uchováváme jen v nezbytném rozsahu.
-      - Uživatel může kdykoliv požádat o smazání účtu.
-      ## Kontakt
-      V případě dotazů nás kontaktujte na [archenergy.cz](https://archenergy.cz).
-
-registration:
-  socialLogins: ["google"]
-
 endpoints:
   custom:
     - name: "OpenAI"
@@ -42,3 +13,28 @@ endpoints:
         "gpt-4o-mini":
           modelDisplayLabel: "GPT-4o Mini"
       fetch: false
+    - name: "OpenRouter"
+      apiKey: "${OPENROUTER_KEY}"
+      baseURL: "https://openrouter.ai/api/v1"
+      models:
+        default: ["gpt-3.5-turbo"]
+        fetch: true
+      titleConvo: true
+      titleModel: "current_model"
+      summarize: false
+      summaryModel: "current_model"
+      forcePrompt: false
+      modelDisplayLabel: "OpenRouter"
+    - name: "Ollama"
+      apiKey: "ollama"
+      baseURL: "http://host.docker.internal:11434/v1/"
+      models:
+        default: [
+          "llama3:latest",
+          "command-r",
+          "mixtral",
+          "phi3"
+          ]
+        fetch: true # fetching list of models is not supported
+      titleConvo: true
+      titleModel: "current_model"
