@@ -1,13 +1,40 @@
 version: 1.2.8
-
+ 
+cache: true
+ 
+interface:
+  # MCP Servers UI configuration
+  mcpServers:
+    placeholder: 'MCP Servers'
+    
+  # Privacy policy settings
+  privacyPolicy:
+    externalUrl: 'https://librechat.ai/privacy-policy'
+    openNewTab: true
+ 
+  # Terms of service
+  termsOfService:
+    externalUrl: 'https://librechat.ai/tos'
+    openNewTab: true
+ 
+registration:
+  socialLogins: ["discord", "facebook", "github", "google", "openid"]
+ 
 endpoints:
   custom:
-    - name: "OpenAI TEST" # <-- ZMĚNA ZDE
-      apiKey: "${OPENAI_API_KEY}"
-      baseURL: "https://api.openai.com/v1"
+ 
+    # Anyscale
+    - name: "Anyscale"
+      apiKey: "${ANYSCALE_API_KEY}"
+      baseURL: "https://api.endpoints.anyscale.com/v1"
       models:
-        "gpt-4o-mini":
-          modelDisplayLabel: "Testovací Model Mini" # <-- A ZMĚNA ZDE
-      fetch: false
+        default: [
+          "meta-llama/Llama-2-7b-chat-hf",
+          ]
+        fetch: true
       titleConvo: true
-      titleModel: "gpt-4o-mini"
+      titleModel: "meta-llama/Llama-2-7b-chat-hf"
+      summarize: false
+      summaryModel: "meta-llama/Llama-2-7b-chat-hf"
+      forcePrompt: false
+      modelDisplayLabel: "Anyscale"
