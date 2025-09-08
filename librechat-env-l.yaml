@@ -1,60 +1,29 @@
 version: 1.2.8
 cache: true
-
 endpoints:
   custom:
-    # ----------------------------------------
-    # OpenAI Modely
-    # ----------------------------------------
-    - name: "OpenAI"
-      apiKey: "${OPENAI_API_KEY}" # Odkazuje na vaši proměnnou OPENAI_API_KEY
-      baseURL: "https://api.openai.com/v1"
-      titleConvo: true
-      titleModel: "gpt-4o-mini"
-      fetch: false
+    - name: "OpenRouter"
+      apiKey: "${OPENROUTER_KEY}"
+      baseURL: "https://openrouter.ai/api/v1"
       models:
-        "gpt-4o":
-          modelDisplayLabel: "ChatGPT 4o"
-        "gpt-4o-mini":
-          modelDisplayLabel: "ChatGPT 4o Mini"
-
-    # ----------------------------------------
-    # Google Modely
-    # ----------------------------------------
-    - name: "Google"
-      apiKey: "${GOOGLE_KEY}" # Odkazuje na vaši proměnnou GOOGLE_KEY
-      baseURL: "https://generativelanguage.googleapis.com/v1beta"
+        default: ["gpt-3.5-turbo"]
+        fetch: true
       titleConvo: true
-      titleModel: "models/gemini-1.5-flash-latest" # Používáme rychlý model pro titulky
-      fetch: false
-      # DŮLEŽITÉ: Názvy modelů pro Google API musí obsahovat prefix "models/"
+      titleModel: "current_model"
+      summarize: false
+      summaryModel: "current_model"
+      forcePrompt: false
+      modelDisplayLabel: "OpenRouter"
+    - name: "Ollama"
+      apiKey: "ollama"
+      baseURL: "http://host.docker.internal:11434/v1/"
       models:
-        "models/gemini-2.5-pro":
-          modelDisplayLabel: "Gemini 2.5 Pro"
-        "models/gemini-2.5-flash":
-          modelDisplayLabel: "Gemini 2.5 Flash"
-        "models/gemini-2.5-flash-lit":
-          modelDisplayLabel: "Gemini 2.5 Flash Lite"
-
-    # ----------------------------------------
-    # Anthropic Modely (ZDE BYLA CHYBA OPRAVENA)
-    # ----------------------------------------
-    - name: "Anthropic"
-      apiKey: "${ANTHROPIC_API_KEY}" # Odkazuje na vaši proměnnou ANTHROPIC_API_KEY
-      baseURL: "https://api.anthropic.com/v1"
-      # Anthropic vyžaduje speciální hlavičky pro správnou funkci
-      headers:
-        "x-api-key": "${ANTHROPIC_API_KEY}"
-        "anthropic-version": "2023-06-01"
+        default: [
+          "llama3:latest",
+          "command-r",
+          "mixtral",
+          "phi3"
+          ]
+        fetch: true # fetching list of models is not supported
       titleConvo: true
-      titleModel: "claude-3-haiku-20240307" # Používáme rychlý model pro titulky
-      fetch: false
-      models:
-        "claude-opus-4-20250514":
-          modelDisplayLabel: "Claude Opus 4"
-        "claude-sonnet-4-20250514":
-          modelDisplayLabel: "Claude Sonnet 4"
-        "claude-3-7-sonnet-20250219":
-          modelDisplayLabel: "Claude 3.7 Sonnet"
-        "claude-3-5-haiku-20241022":
-          modelDisplayLabel: "Claude 3.5 Haiku"
+      titleModel: "current_model"
