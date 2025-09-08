@@ -31,9 +31,6 @@ registration:
   socialLogins: ["google"]
 
 endpoints:
-  # ---------------------------------------------------------------------------
-  # Asistenti – speciální endpoint mimo 'custom'
-  # ---------------------------------------------------------------------------
   assistants:
     supportedIds:
       - "asst_MLMO60C5sEqtNLFbUVAc6fy6"
@@ -41,9 +38,6 @@ endpoints:
     titleModel: "gpt-4o-mini"
     modelDisplayLabel: "⚡ Airis"
 
-  # ---------------------------------------------------------------------------
-  # Vlastní endpointy v sekci 'custom'
-  # ---------------------------------------------------------------------------
   custom:
     - name: "OpenAI"
       apiKey: "${OPENAI_API_KEY}"
@@ -86,41 +80,3 @@ endpoints:
           modelDisplayLabel: "Claude 3.5 Sonnet"
         "claude-3-opus-20240229":
           modelDisplayLabel: "Claude 3 Opus"
-
-speech:
-  speechTab:
-    conversationMode: true
-    advancedMode: false
-    speechToText:
-      engineSTT: "browser"
-      languageSTT: "Czech (CZ)"
-      autoTranscribeAudio: true
-      decibelValue: -45
-      autoSendText: 3
-    textToSpeech:
-      engineTTS: "external"
-      voice: "nova"
-      languageTTS: "cs"
-      automaticPlayback: true
-      playbackRate: 1.0
-      cacheTTS: true
-  stt:
-    openai:
-      apiKey: "${STT_OPENAI_API_KEY}"
-      model: "whisper-1"
-  tts:
-    openai:
-      apiKey: "${TTS_OPENAI_API_KEY}"
-      model: "tts-1"
-      voices: ["nova", "alloy", "echo", "fable", "onyx", "shimmer"]
-
-rateLimits:
-  fileUploads:
-    ipMax: 100
-    ipWindowInMinutes: 60
-    userMax: 50
-    userWindowInMinutes: 60
-
-logging:
-  level: "info"
-  hideIPs: true
