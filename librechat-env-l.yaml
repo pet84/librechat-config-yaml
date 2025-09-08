@@ -1,12 +1,12 @@
-version: 1.2.4
+version: 1.2.8
 cache: true
 
 interface:
   customWelcome: "🌟 Vítej, {{user.name}} 👋 Jsem Airis"
   customFooter: "© 2025 AIRIS ArchEnergy · AI může dělat chyby"
   hideModelsFromUI: false
-  promptTemplates: true # Povolit šablony promptů
-  modelSpecs: true # Zobrazit specifikace modelů
+  promptTemplates: true
+  modelSpecs: true
 
   termsOfService:
     modalContent: |
@@ -34,100 +34,92 @@ interface:
       V případě dotazů nás kontaktujte na [archenergy.cz](https://archenergy.cz).
 
 registration:
-  socialLogins:
-    - "google"
+  socialLogins: ["google"]
 
 endpoints:
   assistants:
-    models:
-      default:
-        - id: "asst_MLMO60C5sEqtNLFbUVAc6fy6"
-          label: "Airis🤖"
-    fetch: false
+    # Povolí pouze tohoto jednoho asistenta
+    supportedIds:
+      - "asst_MLMO60C5sEqtNLFbUVAc6fy6"
+    titleConvo: true
+    titleModel: "gpt-4o-mini"
     modelDisplayLabel: "⚡ Airis"
 
   openAI:
     titleConvo: true
-    titleModel: gpt-4o-mini
+    titleModel: "gpt-4o-mini"
     summarize: false
-    summaryModel: gpt-4o-mini
+    summaryModel: "gpt-4o-mini"
     models:
-      default:
-        - id: "gpt-4o"
-          label: "ChatGPT 4o"
-        - id: "gpt-4o-mini"
-          label: "ChatGPT 4o Mini"
+      "gpt-4o":
+        modelDisplayLabel: "ChatGPT 4o"
+      "gpt-4o-mini":
+        modelDisplayLabel: "ChatGPT 4o Mini"
     fetch: false
-    modelDisplayLabel: "ChatGPT"
 
   google:
     titleConvo: true
-    titleModel: gemini-2.5-flash
+    titleModel: "gemini-2.5-flash"
     summarize: false
-    summaryModel: gemini-2.5-flash
+    summaryModel: "gemini-2.5-flash"
     models:
-      default:
-        - id: "gemini-2.5-pro"
-          label: "Gemini 2.5 Pro"
-        - id: "gemini-2.5-flash"
-          label: "Gemini 2.5 Flash"
-        - id: "gemini-2.5-flash-lit"
-          label: "Gemini 2.5 Flash Lite"
+      "gemini-2.5-pro":
+        modelDisplayLabel: "Gemini 2.5 Pro"
+      "gemini-2.5-flash":
+        modelDisplayLabel: "Gemini 2.5 Flash"
+      "gemini-2.5-flash-lit":
+        modelDisplayLabel: "Gemini 2.5 Flash Lite"
     fetch: false
-    modelDisplayLabel: "Google Gemini"
 
   anthropic:
     apiKey: "${ANTHROPIC_API_KEY}"
     titleConvo: true
-    titleModel: claude-3-5-haiku-20241022
+    titleModel: "claude-3-5-haiku-20241022"
     summarize: false
-    summaryModel: claude-3-5-haiku-20241022
+    summaryModel: "claude-3-5-haiku-20241022"
     models:
-      default:
-        - id: "claude-opus-4-20250514"
-          label: "Claude Opus 4"
-        - id: "claude-sonnet-4-20250514"
-          label: "Claude Sonnet 4"
-        - id: "claude-3-7-sonnet-20250219"
-          label: "Claude 3.7 Sonnet"
-        - id: "claude-3-5-haiku-20241022"
-          label: "Claude 3.5 Haiku"
+      "claude-opus-4-20250514":
+        modelDisplayLabel: "Claude Opus 4"
+      "claude-sonnet-4-20250514":
+        modelDisplayLabel: "Claude Sonnet 4"
+      "claude-3-7-sonnet-20250219":
+        modelDisplayLabel: "Claude 3.7 Sonnet"
+      "claude-3-5-haiku-20241022":
+        modelDisplayLabel: "Claude 3.5 Haiku"
     fetch: false
-    modelDisplayLabel: "Anthropic Claude"
 
-# Speech-to-Text (STT) - Whisper podporuje češtinu
-stt:
-  openai:
-    apiKey: "${STT_OPENAI_API_KEY}"
-    model: "whisper-1"
-
-# Text-to-Speech (TTS) - OpenAI TTS s Nova jako výchozí
-tts:
-  openai:
-    apiKey: "${TTS_OPENAI_API_KEY}"
-    model: "tts-1"
-    voices: ["nova", "alloy", "echo", "fable", "onyx", "shimmer"] # Nova je první = výchozí
-
+# Speech konfigurace
 speech:
   # Výchozí nastavení pro uživatele
   speechTab:
     conversationMode: true
     advancedMode: false
-
-  speechToText:
-    engineSTT: "external"
-    languageSTT: "Czech (CZ)"
-    autoTranscribeAudio: true
-    decibelValue: -45
-    autoSendText: 0
-
-  textToSpeech:
-    engineTTS: "external"
-    voice: "nova" # Výchozí hlas Nova
-    languageTTS: "cs"
-    automaticPlayback: true
-    playbackRate: 1.0
-    cacheTTS: true
+    speechToText:
+      engineSTT: "browser"
+      languageSTT: "Czech (CZ)"
+      autoTranscribeAudio: true
+      decibelValue: -45
+      autoSendText: 3
+    textToSpeech:
+      engineTTS: "external"
+      voice: "nova"
+      languageTTS: "cs"
+      automaticPlayback: true
+      playbackRate: 1.0
+      cacheTTS: true
+  
+  # Speech-to-Text (STT) - Whisper podporuje češtinu
+  stt:
+    openai:
+      apiKey: "${STT_OPENAI_API_KEY}"
+      model: "whisper-1"
+  
+  # Text-to-Speech (TTS) - OpenAI TTS s Nova jako výchozí
+  tts:
+    openai:
+      apiKey: "${TTS_OPENAI_API_KEY}"
+      model: "tts-1"
+      voices: ["nova", "alloy", "echo", "fable", "onyx", "shimmer"]
 
 # Rate limiting - ochrana proti spam
 rateLimits:
