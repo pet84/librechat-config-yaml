@@ -2,8 +2,7 @@ version: 1.2.4
 cache: true
 
 interface:
-  customWelcome: "Vítej, {{user.name}} 👋"
-  customFooter: "![Logo](https://airis.archenergy.cz/wp-content/uploads/2025/09/ico32-3.svg) © 2025 **AIRIS ArchEnergy** · [airis.archenergy.cz](https://airis.archenergy.cz) · *AI může dělat chyby*"
+  customWelcome: "Vítej, {{user.name}} 👋 Jsem Airis"
 
   termsOfService:
     modalContent: |
