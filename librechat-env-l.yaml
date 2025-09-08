@@ -2,30 +2,34 @@ version: 1.2.4
 cache: true
 
 interface:
-  customWelcome: " Vítej, {{user.name}} 👋 Jsem Airis ⚡"
+  customWelcome: "🌟 Vítej, {{user.name}} 👋 Jsem Airis"
   customFooter: "© 2025 AIRIS ArchEnergy · AI může dělat chyby"
   hideModelsFromUI: false
-  promptTemplates: true      # Povolit šablony promptů
-  modelSpecs: true           # Zobrazit specifikace modelů
+  promptTemplates: true # Povolit šablony promptů
+  modelSpecs: true # Zobrazit specifikace modelů
+
   termsOfService:
     modalContent: |
       # Podmínky služby
+      
       ## Úvod
-      Vítejte v AIRIS ArchEnergy Chat!  
-      Používáním této služby souhlasíte s následujícími pravidly:
+      Vítejte v AIRIS ArchEnergy Chat! Používáním této služby souhlasíte s následujícími pravidly:
       - Služba je poskytována „tak jak je".
       - AIRIS ArchEnergy nenese odpovědnost za rozhodnutí učiněná na základě výstupů AI.
       - Uživatel souhlasí, že AI může dělat chyby.
+      
       ## Závěr
       Pokud nesouhlasíte s těmito podmínkami, službu nepoužívejte.
+
   privacyPolicy:
     modalContent: |
       # Zásady ochrany osobních údajů
+      
       ## Ochrana dat
-      Vaše soukromí je pro nás důležité.  
-      Data konverzací nejsou sdílena s třetími stranami mimo poskytovatele AI API.
+      Vaše soukromí je pro nás důležité. Data konverzací nejsou sdílena s třetími stranami mimo poskytovatele AI API.
       - Osobní údaje uchováváme jen v nezbytném rozsahu.
       - Uživatel může kdykoliv požádat o smazání účtu.
+      
       ## Kontakt
       V případě dotazů nás kontaktujte na [archenergy.cz](https://archenergy.cz).
 
@@ -37,6 +41,7 @@ endpoints:
   assistants:
     fetch: false
     modelDisplayLabel: "⚡ Airis"
+
   openAI:
     titleConvo: true
     titleModel: gpt-4o-mini
@@ -44,12 +49,13 @@ endpoints:
     summaryModel: gpt-4o-mini
     models:
       default:
-        - id: gpt-4o
+        - id: "gpt-4o"
           label: "ChatGPT 4o"
-        - id: gpt-4o-mini
+        - id: "gpt-4o-mini"
           label: "ChatGPT 4o Mini"
     fetch: false
     modelDisplayLabel: "ChatGPT"
+
   google:
     titleConvo: true
     titleModel: gemini-2.5-flash
@@ -57,61 +63,66 @@ endpoints:
     summaryModel: gemini-2.5-flash
     models:
       default:
-        - id: gemini-2.5-pro
+        - id: "gemini-2.5-pro"
           label: "Gemini 2.5 Pro"
-        - id: gemini-2.5-flash
+        - id: "gemini-2.5-flash"
           label: "Gemini 2.5 Flash"
-        - id: gemini-2.5-flash-lite
+        - id: "gemini-2.5-flash-lit"
           label: "Gemini 2.5 Flash Lite"
     fetch: false
     modelDisplayLabel: "Google Gemini"
+
   anthropic:
     titleConvo: true
-    titleModel: claude-3-5-sonnet-20241022
+    titleModel: claude-3-5-haiku-20241022
     summarize: false
-    summaryModel: claude-3-5-sonnet-20241022
+    summaryModel: claude-3-5-haiku-20241022
     models:
       default:
-        - id: claude-3-5-sonnet-20241022
-          label: "Claude 3.5 Sonnet"
-        - id: claude-3-5-haiku-20241022  
+        - id: "claude-opus-4-20250514"
+          label: "Claude Opus 4"
+        - id: "claude-sonnet-4-20250514"
+          label: "Claude Sonnet 4"
+        - id: "claude-3-7-sonnet-20250219"
+          label: "Claude 3.7 Sonnet"
+        - id: "claude-3-5-haiku-20241022"
           label: "Claude 3.5 Haiku"
-        - id: claude-3-opus-20240229
-          label: "Claude Opus"
     fetch: false
     modelDisplayLabel: "Anthropic Claude"
+
+# Speech-to-Text (STT) - Whisper podporuje češtinu
+stt:
+  openai:
+    apiKey: "${STT_OPENAI_API_KEY}"
+    model: "whisper-1"
+
+# Text-to-Speech (TTS) - OpenAI TTS s Nova jako výchozí
+tts:
+  openai:
+    apiKey: "${TTS_OPENAI_API_KEY}"
+    model: "tts-1"
+    voices: ["nova", "alloy", "echo", "fable", "onyx", "shimmer"] # Nova je první = výchozí
 
 speech:
   # Výchozí nastavení pro uživatele
   speechTab:
-    conversationMode: false         # Vypnuto ve výchozím stavu
+    conversationMode: true
     advancedMode: false
-    speechToText:
-      engineSTT: "browser"          # Browser je rychlejší pro češtinu
-      languageSTT: "Czech (CZ)"
-      autoTranscribeAudio: false    # Vypnuto ve výchozím stavu
-      decibelValue: -45
-      autoSendText: 1               # Automatické odeslání po krátké pauze (když je aktivní)
-    textToSpeech:
-      engineTTS: "external"
-      voice: "nova"                 # Výchozí hlas Nova
-      languageTTS: "cs"
-      automaticPlayback: true
-      playbackRate: 1.0
-      cacheTTS: true
-  
-  # Speech-to-Text (STT) - Whisper podporuje češtinu
-  stt:
-    openai:
-      apiKey: "${OPENAI_API_KEY}"
-      model: "whisper-1"
-  
-  # Text-to-Speech (TTS) - OpenAI TTS s Nova jako výchozí
-  tts:
-    openai:
-      apiKey: "${OPENAI_API_KEY}"
-      model: "tts-1"
-      voices: ["nova", "alloy", "echo", "fable", "onyx", "shimmer"]  # Nova je první = výchozí
+
+  speechToText:
+    engineSTT: "external"
+    languageSTT: "Czech (CZ)"
+    autoTranscribeAudio: true
+    decibelValue: -45
+    autoSendText: 0
+
+  textToSpeech:
+    engineTTS: "external"
+    voice: "nova" # Výchozí hlas Nova
+    languageTTS: "cs"
+    automaticPlayback: true
+    playbackRate: 1.0
+    cacheTTS: true
 
 # Rate limiting - ochrana proti spam
 rateLimits:
