@@ -21,7 +21,7 @@ endpoints:
       default:
         - gpt-4o
         - gpt-4o-mini
-      fetch: false
+    fetch: false
     modelDisplayLabel: "OpenAI"
 
   google:
@@ -34,7 +34,7 @@ endpoints:
         - gemini-2.5-pro
         - gemini-2.5-flash
         - gemini-2.5-flash-lite
-      fetch: false
+    fetch: false
     modelDisplayLabel: "Google Gemini"
 
   anthropic:
@@ -47,5 +47,5 @@ endpoints:
         - claude-3-opus-20240229
         - claude-3-sonnet-20240229
         - claude-3-haiku-20240307
-      fetch: false
+    fetch: false
     modelDisplayLabel: "Anthropic Claude"
