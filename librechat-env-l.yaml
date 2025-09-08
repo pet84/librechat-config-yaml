@@ -83,10 +83,33 @@ endpoints:
     modelDisplayLabel: "Anthropic Claude"
 
 speech:
+  # Volitelné - výchozí nastavení pro uživatele
+  speechTab:
+    conversationMode: true
+    advancedMode: false
+    speechToText:
+      engineSTT: "external"
+      languageSTT: "Czech (CZ)"     # ⬅️ pro češtinu
+      autoTranscribeAudio: true
+      decibelValue: -45
+      autoSendText: 0
+    textToSpeech:
+      engineTTS: "external"
+      voice: "nova"                 # ⬅️ dobrý hlas pro češtinu
+      languageTTS: "cs"             # ⬅️ český kód jazyka
+      automaticPlayback: true
+      playbackRate: 1.0
+      cacheTTS: true
+  
+  # Speech-to-Text (STT) - Whisper podporuje češtinu
   stt:
-    browser: true   # nejlepší pro češtinu
+    openai:
+      apiKey: "${OPENAI_API_KEY}"
+      model: "whisper-1"
+  
+  # Text-to-Speech (TTS) - OpenAI TTS podporuje češtinu
   tts:
     openai:
-      apiKey: "${TTS_API_KEY}"
-      model: tts-1     # přepni na tts-1-hd pro vyšší kvalitu
-      voice: nova
+      apiKey: "${OPENAI_API_KEY}"
+      model: "tts-1"                # nebo "tts-1-hd" 
+      voices: ["alloy", "echo", "fable", "onyx", "nova", "shimmer"]
