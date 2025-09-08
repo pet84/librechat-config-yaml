@@ -39,6 +39,10 @@ registration:
 
 endpoints:
   assistants:
+    models:
+      default:
+        - id: "asst_MLMO60C5sEqtNLFbUVAc6fy6"
+          label: "Airis🤖"
     fetch: false
     modelDisplayLabel: "⚡ Airis"
 
@@ -73,6 +77,7 @@ endpoints:
     modelDisplayLabel: "Google Gemini"
 
   anthropic:
+    apiKey: "${ANTHROPIC_API_KEY}"
     titleConvo: true
     titleModel: claude-3-5-haiku-20241022
     summarize: false
