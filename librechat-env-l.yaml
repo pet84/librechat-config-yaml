@@ -74,6 +74,10 @@ memory:
     - "tools_stack"          # používané nástroje (Podio, Make, Meow AI Engine…)
     - "project_prefs"        # preferované formáty výstupů (JSON schema, tabulky, Tailwind, atd.)
     - "locales"              # jazyky/locale (cs-CZ, en-US, atd.)
+    - "user_preferences"     # obecné uživatelské preference 
+    - "conversation_context" # důležitý kontext z konverzací
+    - "learned_facts"        # naučená fakta a poznatky
+    - "personal_information" # základní osobní info (jen explicitní)
     
     # 💡 MÉ dodatečné business-oriented klíče
     - "current_projects"     # aktivní dlouhodobé projekty
