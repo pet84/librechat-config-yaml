@@ -21,19 +21,19 @@ endpoints:
     - name: "302AI"
       apiKey: "${AI302_API_KEY}"
       baseURL: "https://api.302.ai/v1"
-      fetch: false
-      titleConvo: true
-      titleModel: "gpt-4o-mini"
-      summarize: false
-      summaryModel: "gpt-4o-mini"
-      # modelDisplayLabel je vynechán — zobrazí se výchozí "AI"
       models:
-        default: 
+        default:
           - "gpt-4o"
           - "gpt-4o-mini"
           - "claude-3-5-sonnet-20241022"
           - "claude-3-5-haiku-20241022"
           - "gemini-2.5-flash"
+      fetch: false
+      titleConvo: true
+      titleModel: "gpt-4o-mini"
+      summarize: false
+      summaryModel: "gpt-4o-mini"
+      modelDisplayLabel: "302AI"
 
 speech:
   speechTab:
