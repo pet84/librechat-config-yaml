@@ -57,3 +57,82 @@ speech:
       apiKey: "${OPENAI_API_KEY}"
       model: "tts-1"
       voices: ["nova", "alloy", "echo", "fable", "onyx", "shimmer"]  # Nova je první = výchozí
+      
+memory:
+  disabled: false            # zapnuto (když dáš true, úplně vypneš paměť)
+  personalize: true          # uživatelé si mohou v chatu paměť zapnout/vypnout
+  tokenLimit: 3000           # strop tokenů pro uložení a zpracování paměti
+  messageWindowSize: 8       # kolik posledních zpráv se bere do kontextu pro učení
+  
+  # 🎯 TVOJE skvělé validKeys (s opravenými uvozovkami)
+  validKeys:
+    - "preferred_name"       # jak tě oslovovat (např. „Ing. Petr")
+    - "role"                 # role/pozice (např. „energetický specialista")  
+    - "company"              # název firmy/brandů
+    - "communication_style"  # styl komunikace (neformální, diakritika, mezery mezi odstavci…)
+    - "domains_of_interest"  # odborné oblasti (PENB, NZÚ, RÚIAN, Modbus, atd.)
+    - "tools_stack"          # používané nástroje (Podio, Make, Meow AI Engine…)
+    - "project_prefs"        # preferované formáty výstupů (JSON schema, tabulky, Tailwind, atd.)
+    - "locales"              # jazyky/locale (cs-CZ, en-US, atd.)
+    
+    # 💡 MÉ dodatečné business-oriented klíče
+    - "current_projects"     # aktivní dlouhodobé projekty
+    - "client_context"       # kontext a požadavky klientů
+    - "workflow_patterns"    # pracovní postupy a automatizace
+  
+  agent:
+    provider: "openAI"       # nebo "openRouter" / "azureOpenAI" / "anthropic" dle tvého endpointu
+    model: "gpt-4o-mini"     # ✅ OPRAVENO: skutečný model (ne gpt-5-mini)
+    
+    # 🧠 Kombinované instrukce - tvoje business logika + moje optimalizace
+    instructions: |
+      Jsi specializovaný memory agent pro business kontext. Zaměř se na ukládání 
+      profesních a dlouhodobě relevantních informací.
+      
+      📊 PRIORITNÍ informace k ukládání:
+      
+      preferred_name: Jak uživatele oslovovat (Ing., pan, jméno...)
+      role: Profesní pozice, specializace, odpovědnosti
+      company: Název firmy, brandů, organizační kontext
+      communication_style: 
+        - Formalita (formální/neformální)  
+        - Jazyk a locale (čeština, angličtina)
+        - Technická úroveň komunikace
+        - Preference formátování (mezery, diakritika...)
+      
+      domains_of_interest: Odborné oblasti jako PENB, NZÚ, RÚIAN, Modbus, IoT...
+      tools_stack: Konkrétní nástroje - Podio, Make.com, Meow AI Engine, databáze...
+      project_prefs: Preferované výstupy - JSON schema, tabulky, Tailwind, grafy...
+      locales: Jazykové a regionální nastavení
+      
+      current_projects: Aktivní dlouhodobé projekty (ne jednorázové úkoly)
+      client_context: Důležité info o klientech a jejich požadavcích
+      workflow_patterns: Opakující se procesy a automatizace
+      
+      user_preferences: Obecné preference (způsob práce, UI/UX preference, oblíbené přístupy)
+      conversation_context: Důležitý kontext a poznatky z předchozích konverzací
+      learned_facts: Nově naučená fakta, poznatky, technické informace
+      personal_information: Základní osobní informace (pouze explicitně sdílené)
+      
+      🎯 UKLÁDEJ když uživatel:
+      - Se představuje nebo mění svou roli
+      - Specifikuje komunikační preference  
+      - Jmenuje nástroje a technologie které používá
+      - Definuje požadavky na formáty výstupů
+      - Zmíní dlouhodobé projekty nebo klienty
+      - Popisuje své workflow a procesy
+      
+      🚫 NEUKLÁDEJ:
+      - Dočasné úkoly a jednorázové dotazy
+      - Denní aktivity a krátké konverzace
+      - Osobní informace mimo profesi
+      - Citlivé údaje bez explicitního souhlasu
+      - Zastaralé informace (pravidelně aktualizuj)
+      
+      💪 Buď proaktivní: Když vidíš konflikt nebo zastaralé info, aktualizuj ho.
+    
+    # ⚙️ Optimalizované parametry pro konzistentní business rozhodování
+    model_parameters:
+      temperature: 0.2       # Konzistentní, ale ne úplně rigidní
+      max_tokens: 1200       # Dostatečný prostor pro detailní memory
+      top_p: 0.9            # Trochu kreativity při organizaci informací
