@@ -1,9 +1,7 @@
 version: 1.2.8
 cache: true
-
 interface:
   customWelcome: "🌟 Vítej, {{user.name}} 👋 Jsem Airis"
-  modelSpecs: true
   termsOfService:
     modalContent: |
       # Podmínky služby
@@ -25,104 +23,64 @@ interface:
       - Uživatel může kdykoliv požádat o smazání účtu.
       ## Kontakt
       V případě dotazů nás kontaktujte na [archenergy.cz](https://archenergy.cz).
-
 registration:
   socialLogins:
     - "google"
-
 endpoints:
   custom:
     - name: "OpenRouter"
       apiKey: "${OPENROUTER_KEY}"
       baseURL: "https://openrouter.ai/api/v1"
-      fetch: true
+      models:
+        default: ["gpt-3.5-turbo"]
+        fetch: true
       titleConvo: true
-      titleModel: "openai/gpt-3.5-turbo"
+      titleModel: "current_model"
       summarize: false
-      summaryModel: "openai/gpt-3.5-turbo"
+      summaryModel: "current_model"
       forcePrompt: false
       modelDisplayLabel: "OpenRouter"
-
     - name: "Ollama"
       apiKey: "ollama"
       baseURL: "http://host.docker.internal:11434/v1/"
-      fetch: true
+      models:
+        default: [
+          "llama3:latest",
+          "command-r",
+          "mixtral",
+          "phi3"
+          ]
+        fetch: true # fetching list of models is not supported
       titleConvo: true
-      titleModel: "llama3:latest"
-      modelDisplayLabel: "Ollama"
-
+      titleModel: "current_model"
 speech:
+  # Výchozí nastavení pro uživatele
   speechTab:
-    conversationMode: false         # výchozí: vypnuto
+    conversationMode: false         # Vypnuto ve výchozím stavu
     advancedMode: false
     speechToText:
-      engineSTT: "browser"          # rychlé pro češtinu
+      engineSTT: "browser"          # Browser je rychlejší pro češtinu
       languageSTT: "Czech (CZ)"
-      autoTranscribeAudio: false    # vypnuto ve výchozím stavu
+      autoTranscribeAudio: false    # Vypnuto ve výchozím stav
       decibelValue: -45
-      autoSendText: 1               # automatické odeslání po krátké pauze
+      autoSendText: 1               # Automatické odeslání po krátké pauze (když je aktivní)
     textToSpeech:
       engineTTS: "external"
-      voice: "nova"                 # výchozí hlas Nova
+      voice: "nova"                 # Výchozí hlas Nova
       languageTTS: "cs"
       automaticPlayback: true
       playbackRate: 1.0
       cacheTTS: true
+  
+  # Speech-to-Text (STT) - Whisper podporuje češtinu
   stt:
     openai:
       apiKey: "${OPENAI_API_KEY}"
       model: "whisper-1"
+  
+  # Text-to-Speech (TTS) - OpenAI TTS s Nova jako výchozí
   tts:
     openai:
       apiKey: "${OPENAI_API_KEY}"
       model: "tts-1"
-      voices: ["nova", "alloy", "echo", "fable", "onyx", "shimmer"]
-
-modelSpecs:
-  enforce: false
-  prioritize: true
-  list:
-    # OpenRouter
-    - name: "or-3.5"
-      label: "🟢 OpenRouter · GPT-3.5 Turbo"
-      default: true
-      preset:
-        endpoint: "OpenRouter"
-        model: "openai/gpt-3.5-turbo"
-        modelLabel: "GPT-3.5 Turbo"
-
-    - name: "or-4o-mini"
-      label: "⚡ OpenRouter · GPT-4o Mini"
-      preset:
-        endpoint: "OpenRouter"
-        model: "openai/gpt-4o-mini"
-        modelLabel: "GPT-4o Mini"
-
-    - name: "or-4o"
-      label: "⚡ OpenRouter · GPT-4o"
-      preset:
-        endpoint: "OpenRouter"
-        model: "openai/gpt-4o"
-        modelLabel: "GPT-4o"
-
-    # Ollama
-    - name: "ol-llama3"
-      label: "🦙 Ollama · Llama 3 (latest)"
-      preset:
-        endpoint: "Ollama"
-        model: "llama3:latest"
-        modelLabel: "Llama 3"
-
-    - name: "ol-mixtral"
-      label: "🌀 Ollama · Mixtral 8x7B"
-      preset:
-        endpoint: "Ollama"
-        model: "mixtral:8x7b-instruct-v0.1"
-        modelLabel: "Mixtral 8x7B"
-
-    - name: "ol-phi3"
-      label: "🔹 Ollama · Phi-3 Mini 4k"
-      preset:
-        endpoint: "Ollama"
-        model: "phi3:mini-4k-instruct"
-        modelLabel: "Phi-3 Mini 4k"
+      voices: ["nova", "alloy", "echo", "fable", "onyx", "shimmer"]  # Nova je první = výchozí
