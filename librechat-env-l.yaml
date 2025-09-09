@@ -1,21 +1,31 @@
 version: 1.2.4
 cache: true
-
 interface:
-  customWelcome: "Vítej, {{user.name}} 👋 Jsem Airis ⚡"
+  customWelcome: "🌟 Vítej, {{user.name}} 👋 Jsem Airis"
   termsOfService:
     modalContent: |
       # Podmínky služby
-      ...
+      ## Úvod
+      Vítejte v AIRIS ArchEnergy Chat!  
+      Používáním této služby souhlasíte s následujícími pravidly:
+      - Služba je poskytována „tak jak je".
+      - AIRIS ArchEnergy nenese odpovědnost za rozhodnutí učiněná na základě výstupů AI.
+      - Uživatel souhlasí, že AI může dělat chyby.
+      ## Závěr
+      Pokud nesouhlasíte s těmito podmínkami, službu nepoužívejte.
   privacyPolicy:
     modalContent: |
       # Zásady ochrany osobních údajů
-      ...
-
+      ## Ochrana dat
+      Vaše soukromí je pro nás důležité.  
+      Data konverzací nejsou sdílena s třetími stranami mimo poskytovatele AI API.
+      - Osobní údaje uchováváme jen v nezbytném rozsahu.
+      - Uživatel může kdykoliv požádat o smazání účtu.
+      ## Kontakt
+      V případě dotazů nás kontaktujte na [archenergy.cz](https://archenergy.cz).
 registration:
   socialLogins:
     - "google"
-
 endpoints:
   custom:
     - name: "OpenRouter"
@@ -43,30 +53,34 @@ endpoints:
         fetch: true # fetching list of models is not supported
       titleConvo: true
       titleModel: "current_model"
-
 speech:
+  # Výchozí nastavení pro uživatele
   speechTab:
-    conversationMode: false
+    conversationMode: false         # Vypnuto ve výchozím stavu
     advancedMode: false
     speechToText:
-      engineSTT: "browser"
+      engineSTT: "browser"          # Browser je rychlejší pro češtinu
       languageSTT: "Czech (CZ)"
-      autoTranscribeAudio: false
+      autoTranscribeAudio: false    # Vypnuto ve výchozím stavu
       decibelValue: -45
-      autoSendText: 1
+      autoSendText: 1               # Automatické odeslání po krátké pauze (když je aktivní)
     textToSpeech:
       engineTTS: "external"
-      voice: "nova"
+      voice: "nova"                 # Výchozí hlas Nova
       languageTTS: "cs"
       automaticPlayback: true
       playbackRate: 1.0
       cacheTTS: true
+  
+  # Speech-to-Text (STT) - Whisper podporuje češtinu
   stt:
     openai:
       apiKey: "${OPENAI_API_KEY}"
       model: "whisper-1"
+  
+  # Text-to-Speech (TTS) - OpenAI TTS s Nova jako výchozí
   tts:
     openai:
       apiKey: "${OPENAI_API_KEY}"
       model: "tts-1"
-      voices: ["nova", "alloy", "echo", "fable", "onyx", "shimmer"]
+      voices: ["nova", "alloy", "echo", "fable", "onyx", "shimmer"]  # Nova je první = výchozí
