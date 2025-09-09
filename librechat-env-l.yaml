@@ -4,14 +4,14 @@ cache: true
 endpoints:
   custom:
     # ----------------------------------------
-    # OpenAI Modely
+    # OpenAI
     # ----------------------------------------
     - name: "OpenAI"
       apiKey: "${OPENAI_API_KEY}"
       baseURL: "https://api.openai.com/v1"
       fetch: false
       titleConvo: true
-      titleModel: "gpt-4o-mini"
+      titleModel: "gpt-4o-mini"   # <-- výchozí model
       models:
         "gpt-4o":
           modelDisplayLabel: "ChatGPT 4o"
@@ -19,7 +19,7 @@ endpoints:
           modelDisplayLabel: "ChatGPT 4o Mini"
 
     # ----------------------------------------
-    # Google Modely
+    # Google
     # ----------------------------------------
     - name: "Google"
       apiKey: "${GOOGLE_KEY}"
@@ -32,11 +32,11 @@ endpoints:
           modelDisplayLabel: "Gemini 2.5 Pro"
         "models/gemini-2.5-flash":
           modelDisplayLabel: "Gemini 2.5 Flash"
-        "models/gemini-2.5-flash-lite":
+        "models/gemini-2.5-flash-lit":
           modelDisplayLabel: "Gemini 2.5 Flash Lite"
 
     # ----------------------------------------
-    # Anthropic Modely
+    # Anthropic
     # ----------------------------------------
     - name: "Anthropic"
       apiKey: "${ANTHROPIC_API_KEY}"
