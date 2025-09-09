@@ -61,7 +61,7 @@ speech:
     speechToText:
       engineSTT: "browser"          # Browser je rychlejší pro češtinu
       languageSTT: "Czech (CZ)"
-      autoTranscribeAudio: false    # Vypnuto ve výchozím stavu
+      autoTranscribeAudio: false    # Vypnuto ve výchozím stav
       decibelValue: -45
       autoSendText: 1               # Automatické odeslání po krátké pauze (když je aktivní)
     textToSpeech:
