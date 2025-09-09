@@ -1,88 +1,104 @@
-# For more information, see the Configuration Guide:
-# https://www.librechat.ai/docs/configuration/librechat_yaml
- 
-# Configuration version (required)
-version: 1.2.8
- 
-# Cache settings: Set to true to enable caching
+version: 1.2.4
 cache: true
- 
-# Custom interface configuration
+
 interface:
-  # MCP Servers UI configuration
-  mcpServers:
-    placeholder: 'MCP Servers'
- 
-  # Privacy policy settings
-  privacyPolicy:
-    externalUrl: 'https://librechat.ai/privacy-policy'
-    openNewTab: true
- 
-  # Terms of service
+  customWelcome: "🌟 Vítej, {{user.name}} 👋 Jsem Airis"
+
   termsOfService:
-    externalUrl: 'https://librechat.ai/tos'
-    openNewTab: true
- 
-# Example Registration Object Structure (optional)
+    modalContent: |
+      # Podmínky služby
+      ## Úvod
+      Vítejte v AIRIS ArchEnergy Chat!  
+      Používáním této služby souhlasíte s následujícími pravidly:
+      - Služba je poskytována „tak jak je".
+
+      - AIRIS ArchEnergy nenese odpovědnost za rozhodnutí učiněná na základě výstupů AI.
+      - Uživatel souhlasí, že AI může dělat chyby.
+
+      ## Závěr
+      Pokud nesouhlasíte s těmito podmínkami, službu nepoužívejte.
+
+  privacyPolicy:
+    modalContent: |
+      # Zásady ochrany osobních údajů
+      ## Ochrana dat
+      Vaše soukromí je pro nás důležité.  
+      Data konverzací nejsou sdílena s třetími stranami mimo poskytovatele AI API.
+
+      - Osobní údaje uchováváme jen v nezbytném rozsahu.
+      - Uživatel může kdykoliv požádat o smazání účtu.
+
+      ## Kontakt
+      V případě dotazů nás kontaktujte na [archenergy.cz](https://archenergy.cz).
+
 registration:
-  socialLogins: ['github', 'google', 'discord', 'openid', 'facebook']
-  # allowedDomains:
-  # - "gmail.com"
- 
-# rateLimits:
-#   fileUploads:
-#     ipMax: 100
-#     ipWindowInMinutes: 60  # Rate limit window for file uploads per IP
-#     userMax: 50
-#     userWindowInMinutes: 60  # Rate limit window for file uploads per user
-#   conversationsImport:
-#     ipMax: 100
-#     ipWindowInMinutes: 60  # Rate limit window for conversation imports per IP
-#     userMax: 50
-#     userWindowInMinutes: 60  # Rate limit window for conversation imports per user
- 
-# Definition of custom endpoints
+  socialLogins:
+    - "google"
+
 endpoints:
-  # assistants:
-  #   disableBuilder: false # Disable Assistants Builder Interface by setting to `true`
-  #   pollIntervalMs: 750  # Polling interval for checking assistant updates
-  #   timeoutMs: 180000  # Timeout for assistant operations
-  #   # Should only be one or the other, either `supportedIds` or `excludedIds`
-  #   supportedIds: ["asst_supportedAssistantId1", "asst_supportedAssistantId2"]
-  #   # excludedIds: ["asst_excludedAssistantId"]
-  #   Only show assistants that the user created or that were created externally (e.g. in Assistants playground).
-  #   # privateAssistants: false # Does not work with `supportedIds` or `excludedIds`
-  #   # (optional) Models that support retrieval, will default to latest known OpenAI models that support the feature
-  #   retrievalModels: ["gpt-4-turbo-preview"]
-  #   # (optional) Assistant Capabilities available to all users. Omit the ones you wish to exclude. Defaults to list below.
-  #   capabilities: ["code_interpreter", "retrieval", "actions", "tools", "image_vision"]
-  custom:
-    # Groq Example
-    - name: 'groq'
-      apiKey: '${GROQ_API_KEY}'
-      baseURL: 'https://api.groq.com/openai/v1/'
-      models:
-        default: [
-          "llama3-70b-8192",
-          "llama3-8b-8192",
-          "llama2-70b-4096",
-          "mixtral-8x7b-32768",
-          "gemma-7b-it",
-          ]
-        fetch: false
-      titleConvo: true
-      titleModel: 'mixtral-8x7b-32768'
-      modelDisplayLabel: 'groq'
- 
-    # Mistral AI Example
-    - name: 'Mistral' # Unique name for the endpoint
-      # For `apiKey` and `baseURL`, you can use environment variables that you define.
-      # recommended environment variables:
-      apiKey: '${MISTRAL_API_KEY}'
-      baseURL: 'https://api.mistral.ai/v1'
- 
-      # Models configuration
-      models:
+  openAI:
+    titleConvo: true
+@@ -49,7 +40,6 @@ endpoints:
+          label: "ChatGPT 4o Mini"
+    fetch: false
+    modelDisplayLabel: "ChatGPT"
+
+  google:
+    titleConvo: true
+    titleModel: gemini-2.5-flash
+@@ -65,38 +55,36 @@ endpoints:
+          label: "Gemini 2.5 Flash Lite"
+    fetch: false
+    modelDisplayLabel: "Google Gemini"
+
+  anthropic:
+    titleConvo: true
+    titleModel: claude-3-5-sonnet-20241022
+    summarize: false
+    summaryModel: claude-3-5-sonnet-20241022
+    models:
+      default:
+        - id: claude-3-5-sonnet-20241022
+          label: "Claude 3.5 Sonnet"
+        - id: claude-3-5-haiku-20241022  
+          label: "Claude 3.5 Haiku"
+        - id: claude-3-opus-20240229
+          label: "Claude Opus"
+
+
+
+
+    fetch: false
+    modelDisplayLabel: "Anthropic Claude"
+
+speech:
+  # Výchozí nastavení pro uživatele
+  speechTab:
+    conversationMode: true
+    advancedMode: false
+    speechToText:
+      engineSTT: "external"
+      languageSTT: "Czech (CZ)"
+      autoTranscribeAudio: true
+      decibelValue: -45
+      autoSendText: 0
+    textToSpeech:
+      engineTTS: "external"
+      voice: "nova"                 # Výchozí hlas Nova
+      languageTTS: "cs"
+      automaticPlayback: true
+      playbackRate: 1.0
+      cacheTTS: true
+@@ -107,9 +95,9 @@ speech:
+      apiKey: "${OPENAI_API_KEY}"
+      model: "whisper-1"
+
+  # Text-to-Speech (TTS) - OpenAI TTS s Nova jako výchozí
+  tts:
+    openai:
+      apiKey: "${OPENAI_API_KEY}"
+      model: "tts-1"
+      voices: ["nova", "alloy", "echo", "fable", "onyx", "shimmer"]  # Nova je první = výchozí      models:
         # List of default models to use. At least one value is required.
         default: ['mistral-tiny', 'mistral-small', 'mistral-medium']
         # Fetch option: Set to true to fetch models from API.
