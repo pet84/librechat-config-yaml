@@ -31,28 +31,35 @@ endpoints:
     - name: "OpenRouter"
       apiKey: "${OPENROUTER_KEY}"
       baseURL: "https://openrouter.ai/api/v1"
-      models:
-        default: ["gpt-3.5-turbo"]
-        fetch: true
+      fetch: false
       titleConvo: true
-      titleModel: "current_model"
+      titleModel: "openai/gpt-3.5-turbo"
       summarize: false
-      summaryModel: "current_model"
+      summaryModel: "openai/gpt-3.5-turbo"
       forcePrompt: false
       modelDisplayLabel: "OpenRouter"
+      models:
+        "openai/gpt-3.5-turbo":
+          modelDisplayLabel: "🟢 OpenRouter · GPT-3.5 Turbo"
+        "openai/gpt-4o-mini":
+          modelDisplayLabel: "⚡ OpenRouter · GPT-4o Mini"
+        "openai/gpt-4o":
+          modelDisplayLabel: "⚡ OpenRouter · GPT-4o"
+
     - name: "Ollama"
       apiKey: "ollama"
       baseURL: "http://host.docker.internal:11434/v1/"
-      models:
-        default: [
-          "llama3:latest",
-          "command-r",
-          "mixtral",
-          "phi3"
-          ]
-        fetch: true # fetching list of models is not supported
+      fetch: false
       titleConvo: true
-      titleModel: "current_model"
+      titleModel: "llama3:latest"
+      modelDisplayLabel: "Ollama"
+      models:
+        "llama3:latest":
+          modelDisplayLabel: "🦙 Llama 3 (latest)"
+        "mixtral:8x7b-instruct-v0.1":
+          modelDisplayLabel: "🌀 Mixtral 8x7B Instruct"
+        "phi3:mini-4k-instruct":
+          modelDisplayLabel: "🔹 Phi-3 Mini 4k"
 speech:
   # Výchozí nastavení pro uživatele
   speechTab:
