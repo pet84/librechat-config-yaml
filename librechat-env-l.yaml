@@ -18,26 +18,31 @@ registration:
 
 endpoints:
   custom:
-    - name: "302AI"
-      apiKey: "${AI302_API_KEY}"
-      baseURL: "https://api.302.ai/v1"
+    - name: "OpenRouter"
+      apiKey: "${OPENROUTER_KEY}"
+      baseURL: "https://openrouter.ai/api/v1"
       models:
-        "gpt-4o":
-          modelDisplayLabel: "⚡ 302 · GPT-4o"
-        "gpt-4o-mini":
-          modelDisplayLabel: "⚡ 302 · GPT-4o Mini"
-        "claude-3-5-sonnet-20241022":
-          modelDisplayLabel: "🎭 302 · Claude 3.5 Sonnet"
-        "claude-3-5-haiku-20241022":
-          modelDisplayLabel: "🎭 302 · Claude 3.5 Haiku"
-        "gemini-2.5-flash":
-          modelDisplayLabel: "🌐 302 · Gemini 2.5 Flash"
-      fetch: false
+        default: ["gpt-3.5-turbo"]
+        fetch: true
       titleConvo: true
-      titleModel: "gpt-4o-mini"
+      titleModel: "current_model"
       summarize: false
-      summaryModel: "gpt-4o-mini"
-      modelDisplayLabel: "302AI"
+      summaryModel: "current_model"
+      forcePrompt: false
+      modelDisplayLabel: "OpenRouter"
+    - name: "Ollama"
+      apiKey: "ollama"
+      baseURL: "http://host.docker.internal:11434/v1/"
+      models:
+        default: [
+          "llama3:latest",
+          "command-r",
+          "mixtral",
+          "phi3"
+          ]
+        fetch: true # fetching list of models is not supported
+      titleConvo: true
+      titleModel: "current_model"
 
 speech:
   speechTab:
