@@ -41,7 +41,7 @@ speech:
       engineTTS: "external"
       voice: "nova"                 # Výchozí hlas Nova
       languageTTS: "cs"
-      automaticPlayback: true
+      automaticPlayback: false
       playbackRate: 1.0
       cacheTTS: true
   
