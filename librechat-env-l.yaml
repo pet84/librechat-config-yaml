@@ -26,6 +26,29 @@ interface:
 registration:
   socialLogins:
     - "google"
+    endpoints:
+endpoints:
+  custom:
+    - name: "302AI"
+      apiKey: "${AI302_API_KEY}"
+      baseURL: "https://api.302.ai/v1"
+      fetch: false
+      titleConvo: true
+      titleModel: "gpt-4o-mini"
+      summarize: false
+      summaryModel: "gpt-4o-mini"
+      modelDisplayLabel: "302AI"
+      models:
+        "gpt-4o":
+          modelDisplayLabel: "⚡ 302 · GPT-4o"
+        "gpt-4o-mini":
+          modelDisplayLabel: "⚡ 302 · GPT-4o Mini"
+        "claude-3-5-sonnet-20241022":
+          modelDisplayLabel: "🎭 302 · Claude 3.5 Sonnet"
+        "claude-3-5-haiku-20241022":
+          modelDisplayLabel: "🎭 302 · Claude 3.5 Haiku"
+        "gemini-2.5-flash":
+          modelDisplayLabel: "🌐 302 · Gemini 2.5 Flash"
 speech:
   # Výchozí nastavení pro uživatele
   speechTab:
