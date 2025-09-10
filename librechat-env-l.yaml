@@ -39,7 +39,6 @@ endpoints:
           - "sonar-reasoning"
           - "sonar-pro"
           - "sonar"
-          - "r1-1776"
         fetch: false
       titleConvo: true
       titleModel: "current_model"
