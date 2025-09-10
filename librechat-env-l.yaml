@@ -26,6 +26,29 @@ interface:
 registration:
   socialLogins:
     - "google"
+    
+endpoints:
+  custom:
+    - name: "Perplexity"
+      apiKey: "${PERPLEXITY_API_KEY}"
+      baseURL: "https://api.perplexity.ai/"
+      models:
+        default:
+          - "sonar-deep-research"
+          - "sonar-reasoning-pro"
+          - "sonar-reasoning"
+          - "sonar-pro"
+          - "sonar"
+          - "r1-1776"
+        fetch: false # fetching list of models is not supported
+      titleConvo: true
+      titleModel: "gpt-4o-mini"       # na titulky použij GPT
+      summarize: true
+      summaryModel: "gpt-4o-mini"     # pro sumarizace také GPT
+      forcePrompt: false
+      dropParams: ["stop", "frequency_penalty"]
+      modelDisplayLabel: "Perplexity"
+  
 speech:
   # Výchozí nastavení pro uživatele
   speechTab:
