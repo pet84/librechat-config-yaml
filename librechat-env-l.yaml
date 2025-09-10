@@ -113,8 +113,9 @@ memory:
   agent:
     provider: "openAI"       # nebo "openRouter" / "azureOpenAI" / "anthropic" dle tvého endpointu
     model: "gpt-4o-mini"     # ✅ OPRAVENO: skutečný model (ne gpt-5-mini)
-    
-    # 🧠 Kombinované instrukce - tvoje business logika + moje optimalizace
+    toolkits: []
+    tools: []
+        # 🧠 Kombinované instrukce - tvoje business logika + moje optimalizace
     instructions: |
       Jsi specializovaný memory agent pro business kontext. Zaměř se na ukládání 
       profesních a dlouhodobě relevantních informací.
