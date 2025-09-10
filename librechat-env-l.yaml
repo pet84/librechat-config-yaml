@@ -40,11 +40,11 @@ endpoints:
           - "sonar-pro"
           - "sonar"
           - "r1-1776"
-        fetch: false # fetching list of models is not supported
+        fetch: false
       titleConvo: true
-      titleModel: "gpt-4o-mini"       # na titulky použij GPT
+      titleModel: "sonar"  # používej Perplexity model
       summarize: true
-      summaryModel: "gpt-4o-mini"     # pro sumarizace také GPT
+      summaryModel: "sonar"  # používej Perplexity model
       forcePrompt: false
       dropParams: ["stop", "frequency_penalty"]
       modelDisplayLabel: "Perplexity"
