@@ -34,18 +34,23 @@ endpoints:
       baseURL: "https://api.perplexity.ai/"
       models:
         default:
-          - "sonar"
-          - "sonar-pro"
-          - "sonar-reasoning"
-          - "sonar-reasoning-pro"
           - "sonar-deep-research"
+          - "sonar-reasoning-pro"
+          - "sonar-reasoning"
+          - "sonar-pro"
+          - "sonar"
+          - "r1-1776"
         fetch: false
       titleConvo: true
-      titleModel: "sonar"  # používej Perplexity model
+      titleModel: "current_model"
       summarize: true
-      summaryModel: "sonar"  # používej Perplexity model
+      summaryModel: "current_model"
       forcePrompt: false
-      dropParams: ["stop", "frequency_penalty"]
+      dropParams:
+        - "stop"
+        - "frequency_penalty"
+        - "presence_penalty"
+        - "user"
       modelDisplayLabel: "Perplexity"
   
 speech:
