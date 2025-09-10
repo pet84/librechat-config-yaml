@@ -34,12 +34,11 @@ endpoints:
       baseURL: "https://api.perplexity.ai/"
       models:
         default:
-          - "sonar-deep-research"
-          - "sonar-reasoning-pro"
-          - "sonar-reasoning"
-          - "sonar-pro"
           - "sonar"
-          - "r1-1776"
+          - "sonar-pro"
+          - "sonar-reasoning"
+          - "sonar-reasoning-pro"
+          - "sonar-deep-research"
         fetch: false
       titleConvo: true
       titleModel: "sonar"  # používej Perplexity model
