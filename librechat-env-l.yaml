@@ -51,25 +51,38 @@ endpoints:
         - "presence_penalty"
         - "user"
       modelDisplayLabel: "Perplexity"
-    - name: "claude-with-mcp"
-      apiKey: "${ANTHROPIC_API_KEY}"
-      baseURL: "https://api.anthropic.com"
-      models:
-        default: ["claude-3-5-sonnet-20240620"]
-      mcpServers:
-        viasocket-mcp:
-          command: npx
-          args:
-            - mcp-remote
-            - "https://mcp.viasocket.com/68c47777665b428bbd0e15c0-49495/sse"
-        
-        pipedream-podio:
-          command: npx
-          args:
-            - "-y"
-            - supergateway
-            - "--sse"
-            - "https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/podio"
+mcpServers:
+  viasocket-mcp:
+    command: npx
+    args:
+      - mcp-remote
+      - https://mcp.viasocket.com/68c479b331c05964d7b8d5b3-49495/sse
+  
+  viasocket-mcp-2:
+    command: npx
+    args:
+      - mcp-remote
+      - https://mcp.viasocket.com/68c47777665b428bbd0e15c0-49495/sse
+  
+  pipedream-podio-gateway:
+    command: npx
+    args:
+      - "-y"
+      - supergateway
+      - "--sse"
+      - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/podio
+  
+  google-calendar-mcp:
+    command: npx
+    args:
+      - "-y"
+      - "@smithery/cli@latest"
+      - "run"
+      - "@goldk3y/google-calendar-mcp"
+      - "--key"
+      - "2bccd1d8-5e16-42d6-bc6d-0f522b43e26f"
+      - "--profile"
+      - "amazing-meadowlark-Xf7IAh"
   
 speech:
   # Výchozí nastavení pro uživatele
