@@ -52,37 +52,78 @@ endpoints:
         - "user"
       modelDisplayLabel: "Perplexity"
 mcpServers:
-  viasocket-mcp:
+  podio:
     command: npx
     args:
-      - mcp-remote
-      - https://mcp.viasocket.com/68c479b331c05964d7b8d5b3-49495/sse
-  
-  viasocket-mcp-2:
-    command: npx
-    args:
-      - mcp-remote
-      - https://mcp.viasocket.com/68c47777665b428bbd0e15c0-49495/sse
-  
-  pipedream-podio-gateway:
-    command: npx
-    args:
-      - "-y"
+      - -y
       - supergateway
-      - "--sse"
+      - --sse
       - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/podio
-  
-  google-calendar-mcp:
+
+  microsoft_teams:
     command: npx
     args:
-      - "-y"
-      - "@smithery/cli@latest"
-      - "run"
-      - "@goldk3y/google-calendar-mcp"
-      - "--key"
-      - "2bccd1d8-5e16-42d6-bc6d-0f522b43e26f"
-      - "--profile"
-      - "amazing-meadowlark-Xf7IAh"
+      - -y
+      - supergateway
+      - --sse
+      - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/microsoft_teams
+
+  google_calendar:
+    command: npx
+    args:
+      - -y
+      - supergateway
+      - --sse
+      - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/google_calendar
+
+  google_sheets:
+    command: npx
+    args:
+      - -y
+      - supergateway
+      - --sse
+      - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/google_sheets
+
+  google_forms:
+    command: npx
+    args:
+      - -y
+      - supergateway
+      - --sse
+      - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/google_forms
+
+  api_bible:
+    command: npx
+    args:
+      - -y
+      - supergateway
+      - --sse
+      - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/api_bible
+
+  google_docs:
+    command: npx
+    args:
+      - -y
+      - supergateway
+      - --sse
+      - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/google_docs
+
+  microsoft_onedrive:
+    command: npx
+    args:
+      - -y
+      - supergateway
+      - --sse
+      - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/microsoft_onedrive
+
+  spotify:
+    command: npx
+    args:
+      - -y
+      - supergateway
+      - --sse
+      - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/spotify
+
   
 speech:
   # Výchozí nastavení pro uživatele
