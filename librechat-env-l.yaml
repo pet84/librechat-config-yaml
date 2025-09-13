@@ -52,6 +52,29 @@ endpoints:
         - "user"
       modelDisplayLabel: "Perplexity"
 mcpServers:
+  makeWebhook:
+    command: npx
+    args:
+      - -y
+      - supergateway
+      - --sse
+      - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/webhook
+      - --forward
+      - https://hook.eu1.make.com/t1gl72uyphcd06j4dsrafxj4lp33b38u
+  makeWebhook2:
+    command: npx
+    args:
+      - -y
+      - supergateway
+      - --sse
+      - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/webhook
+      - --forward
+      - https://hook.eu1.make.com/t1gl72uyphcd06j4dsrafxj4lp33b38u
+      - --method
+      - POST
+      - --no-headers
+      - --no-body
+      - --verbose
   make:
     command: npx
     args:
