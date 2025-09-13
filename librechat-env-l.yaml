@@ -35,9 +35,6 @@ ocr:
   visionModel: gpt-4o  # or gpt-4o-mini
     
 endpoints:
-  agents:
-    capabilities:
-      - 'ocr'
   custom:
     - name: "Perplexity"
       apiKey: "${PERPLEXITY_API_KEY}"
