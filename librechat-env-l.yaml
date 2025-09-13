@@ -26,14 +26,7 @@ interface:
 registration:
   socialLogins:
     - "google"
-    
-includedTools:
-  - gemini_image_gen
-
-ocr:
-  strategy: openai_vision_ocr
-  visionModel: gpt-4o  # or gpt-4o-mini
-    
+   
 endpoints:
   custom:
     - name: "Perplexity"
