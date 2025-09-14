@@ -26,18 +26,7 @@ interface:
 registration:
   socialLogins:
     - "google"
-tools:
-  - tool_name: spustit_make_scenar
-    function:
-      name: spustit_make_scenar
-      description: Spustí scénář v Make.com přes Zapier. Použij, když uživatel chce aktivovat specifickou automatizaci.
-      parameters:
-        type: object
-        properties: {}
-      http:
-        method: GET
-        # Vložte vaši URL sem:
-        url: https://hooks.zapier.com/hooks/catch/224235/um45jpg/   
+
 endpoints:
   custom:
     - name: "Perplexity"
@@ -251,3 +240,16 @@ memory:
       temperature: 0.2       # Konzistentní, ale ne úplně rigidní
       max_tokens: 1200       # Dostatečný prostor pro detailní memory
       top_p: 0.9            # Trochu kreativity při organizaci informací
+
+tools:
+  - tool_name: spustit_make_scenar
+    function:
+      name: spustit_make_scenar
+      description: Spustí scénář v Make.com přes Zapier. Použij, když uživatel chce aktivovat specifickou automatizaci.
+      parameters:
+        type: object
+        properties: {}
+      http:
+        method: GET
+        # Vložte vaši URL sem:
+        url: https://hooks.zapier.com/hooks/catch/224235/um45jpg/   
