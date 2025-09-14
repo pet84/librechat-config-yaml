@@ -53,23 +53,24 @@ endpoints:
       modelDisplayLabel: "Perplexity"
       
 mcpServers:
-  podio:
-    command: npx
-    args:
-      - -y
-      - supergateway
-      - --sse
-      - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/podio
+#  podio:
+#    command: npx
+#    args:
+#      - -y
+#      - supergateway
+#      - --sse
+#      - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/podio
 
-  microsoft_teams:
-    command: npx
-    args:
-      - -y
-      - supergateway
-      - --sse
-      - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/microsoft_teams
+#  microsoft_teams:
+#    command: npx
+#    args:
+#      - -y
+#      - supergateway
+#      - --sse
+#      - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/microsoft_teams
 
   google_calendar:
+    initTimeout: 150000
     command: npx
     args:
       - -y
@@ -77,23 +78,24 @@ mcpServers:
       - --sse
       - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/google_calendar
 
-  google_sheets:
-    command: npx
-    args:
-      - -y
-      - supergateway
-      - --sse
-      - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/google_sheets
+#  google_sheets:
+#    command: npx
+#   args:
+#      - -y
+#      - supergateway
+#      - --sse
+#      - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/google_sheets
 
-  google_docs:
-    command: npx
-    args:
-      - -y
-      - supergateway
-      - --sse
-      - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/google_docs
+#  google_docs:
+#    command: npx
+#    args:
+#      - -y
+#      - supergateway
+#      - --sse
+#      - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/google_docs
       
   Bible:
+    initTimeout: 150000
     command: npx
     args:
       - -y
@@ -101,13 +103,13 @@ mcpServers:
       - --sse
       - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/api_bible
 
-  google_forms:
-    command: npx
-    args:
-      - -y
-      - supergateway
-      - --sse
-      - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/google_forms
+#  google_forms:
+#    command: npx
+#    args:
+#      - -y
+#      - supergateway
+#      - --sse
+#      - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/google_forms
 #  Funguje
 #   microsoft_onedrive:
 #     command: npx
