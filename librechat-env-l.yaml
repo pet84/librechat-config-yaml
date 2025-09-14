@@ -52,6 +52,12 @@ endpoints:
         - "user"
       modelDisplayLabel: "Perplexity"
       
+ocr:
+  mistralModel: "deployed-mistral-ocr-2503"              # Should match your Azure deployment name
+  apiKey: "${AZURE_MISTRAL_OCR_API_KEY}"                 # Reference to your Azure API key in .env
+  baseURL: "https://your-deployed-endpoint.models.ai.azure.com/v1"  # Your Azure endpoint
+  strategy: "azure_mistral_ocr"                          # Use Azure strategy
+  
 mcpServers:
 #  podio:
 #    command: npx
