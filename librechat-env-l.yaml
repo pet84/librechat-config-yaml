@@ -26,7 +26,7 @@ interface:
 registration:
   socialLogins:
     - "google"
-
+   
 endpoints:
   custom:
     - name: "Perplexity"
@@ -52,6 +52,12 @@ endpoints:
         - "user"
       modelDisplayLabel: "Perplexity"
 mcpServers:
+  zapier:
+    command: npx
+    args:
+      - -y
+      - supergateway
+      - https://mcp.zapier.com/api/mcp/s/Y2RjYWNiZDAtZDM3NC00OTVjLWJmNjktYTkxM2FiNGZhOTYzOmY1Y2YxZTJmLWRhMWUtNGY4NC1iNjEyLTg0YmE4Zjc5MzU3Yg==/mcp
   podio:
     command: npx
     args:
