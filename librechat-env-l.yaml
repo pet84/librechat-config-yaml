@@ -52,6 +52,13 @@ endpoints:
         - "user"
       modelDisplayLabel: "Perplexity"
 mcpServers:
+  hook4:
+    command: npx
+    args:
+      - -y
+      - supergateway
+      - --sse
+      - https://eox54isvi22kjxe.m.pipedream.net
   makeWebhook:
     command: npx
     args:
