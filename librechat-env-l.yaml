@@ -55,7 +55,11 @@ endpoints:
       apiKey: "${MISTRAL_API_KEY}"
       baseURL: "https://api.mistral.ai/v1"
       models:
-        default: ["mistral-tiny", "mistral-small", "mistral-medium", "mistral -large-latest"]
+        default:
+          - "mistral-small-latest"
+          - "mistral-tiny-latest"
+          - "mistral-large-latest"
+          - "mistral-medium-latest"
         fetch: true
       titleConvo: true
       titleModel: "mistral-tiny"
