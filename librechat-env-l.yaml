@@ -51,13 +51,8 @@ endpoints:
         - "presence_penalty"
         - "user"
       modelDisplayLabel: "Perplexity"
+      
 mcpServers:
-  zapier:
-    command: npx
-    args:
-      - -y
-      - supergateway
-      - https://mcp.zapier.com/api/mcp/s/Y2RjYWNiZDAtZDM3NC00OTVjLWJmNjktYTkxM2FiNGZhOTYzOmY1Y2YxZTJmLWRhMWUtNGY4NC1iNjEyLTg0YmE4Zjc5MzU3Yg==/mcp
   podio:
     command: npx
     args:
@@ -90,22 +85,6 @@ mcpServers:
       - --sse
       - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/google_sheets
 
-  google_forms:
-    command: npx
-    args:
-      - -y
-      - supergateway
-      - --sse
-      - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/google_forms
-
-  api_bible:
-    command: npx
-    args:
-      - -y
-      - supergateway
-      - --sse
-      - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/api_bible
-
   google_docs:
     command: npx
     args:
@@ -113,22 +92,38 @@ mcpServers:
       - supergateway
       - --sse
       - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/google_docs
-
-  microsoft_onedrive:
+      
+  Bible:
     command: npx
     args:
       - -y
       - supergateway
       - --sse
-      - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/microsoft_onedrive
+      - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/api_bible
 
-  spotify:
+  google_forms:
     command: npx
     args:
       - -y
       - supergateway
       - --sse
-      - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/spotify
+      - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/google_forms
+#  Funguje
+#   microsoft_onedrive:
+#     command: npx
+#    args:
+#      - -y
+#      - supergateway
+#      - --sse
+#      - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/microsoft_onedrive
+#  Funguje
+#  spotify:
+#    command: npx
+#    args:
+#      - -y
+#      - supergateway
+#      - --sse
+#      - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/spotify
 
   
 speech:
