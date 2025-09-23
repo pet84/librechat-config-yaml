@@ -84,6 +84,36 @@ endpoints:
       dropParams: ['stop']
       modelDisplayLabel: 'OpenRouter'
 
+    # xAI
+    # https://x.ai/api
+    - name: "xai"
+      apiKey: "${XAI_API_KEY}"
+      baseURL: "https://api.x.ai/v1"
+      models:
+        default:
+          - grok-4-fast-reasoning
+          - grok-4-fast-non-reasoning
+          - grok-4-0709
+          - grok-3-mini
+          - grok-3
+          - grok-2-vision-1212
+          - grok-2-1212
+        fetch: false
+      titleConvo: true
+      titleMethod: "completion"
+      titleModel: "grok-4-fast-non-reasoning"
+      summarize: false
+      summaryModel: "grok-4-fast-non-reasoning"
+      forcePrompt: false
+      modelDisplayLabel: "Grok"
+      # Model specifications:
+      # grok-4-fast-reasoning: 256k tokens, 2M tpm, 480 rpm, $0.20/$1.50
+      # grok-4-fast-non-reasoning: 2M tokens, 4M tpm, 480 rpm, $0.20/$0.50
+      # grok-4-0709: 2M tokens, 4M tpm, 480 rpm, $0.20/$0.50
+      # grok-3-mini: 256k tokens, 2M tpm, 480 rpm, $3.00/$15.00
+      # grok-3: 131k tokens, 480 rpm, $0.30/$0.50
+      # grok-2-vision-1212: 131k tokens (US) / 32k tokens (EU), 600 rpm, pricing varies by region
+
 webSearch:
   firecrawlApiKey: "${FIRECRAWL_API_KEY}"
   firecrawlOptions:
