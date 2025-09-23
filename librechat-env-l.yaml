@@ -67,28 +67,27 @@ endpoints:
       modelDisplayLabel: "Mistral"
       dropParams: ["stop", "user", "frequency_penalty", "presence_penalty"]
       
-    # xAI
+    # xAI - Konfigurace bez streamování (k září 2025)
     # https://x.ai/api
     - name: "xai"
       apiKey: "${XAI_API_KEY}"
       baseURL: "https://api.x.ai/v1"
       models:
         default:
-          - grok-4-fast-reasoning
-          - grok-4-fast-non-reasoning
-          - grok-code-fast-1
-          - grok-4
-          - grok-3
-          - grok-3-mini
-          # Přidej grok-2-image-1212 jen pro image gen, ne pro chat
-        fetch: false  # Změň na true pro auto-načítání (pokud máš přístup)
+        - grok-4-fast-reasoning
+        - grok-4-fast-non-reasoning
+        - grok-4
+        - grok-3
+        - grok-3-mini
+      fetch: true  # Automaticky načte dostupné modely
       titleConvo: true
       titleMethod: "completion"
-      titleModel: "grok-3-mini"  # Bezpečný default
+      titleModel: "grok-3-mini"
       summarize: false
       summaryModel: "grok-3-mini"
       forcePrompt: false
       modelDisplayLabel: "Grok (xAI)"
+      stream: false  # Explicitně vypnout streamování
       
     # OpenRouter Example
     - name: 'OpenRouter'
