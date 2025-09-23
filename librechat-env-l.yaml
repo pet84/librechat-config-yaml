@@ -93,41 +93,21 @@ endpoints:
         default:
           - grok-4-fast-reasoning
           - grok-4-fast-non-reasoning
-          - grok-4-0709
-          - grok-3-mini
+          - grok-code-fast-1
+          - grok-4
           - grok-3
-          - grok-2-vision-1212
-          - grok-2-1212
-        fetch: false
+          - grok-3-mini
+          # Přidej grok-2-image-1212 jen pro image gen, ne pro chat
+        fetch: false  # Změň na true pro auto-načítání (pokud máš přístup)
       titleConvo: true
       titleMethod: "completion"
-      titleModel: "grok-4-fast-non-reasoning"
+      titleModel: "grok-3-mini"  # Bezpečný default
       summarize: false
-      summaryModel: "grok-4-fast-non-reasoning"
+      summaryModel: "grok-3-mini"
       forcePrompt: false
-      modelDisplayLabel: "Grok"
-      # Model specifications:
-      # grok-4-fast-reasoning: 256k tokens, 2M tpm, 480 rpm, $0.20/$1.50
-      # grok-4-fast-non-reasoning: 2M tokens, 4M tpm, 480 rpm, $0.20/$0.50
-      # grok-4-0709: 2M tokens, 4M tpm, 480 rpm, $0.20/$0.50
-      # grok-3-mini: 256k tokens, 2M tpm, 480 rpm, $3.00/$15.00
-      # grok-3: 131k tokens, 480 rpm, $0.30/$0.50
-      # grok-2-vision-1212: 131k tokens (US) / 32k tokens (EU), 600 rpm, pricing varies by region
+      modelDisplayLabel: "Grok (xAI)"
 
-webSearch:
-  firecrawlApiKey: "${FIRECRAWL_API_KEY}"
-  firecrawlOptions:
-    formats: ["markdown", "rawHtml"]
-    includeTags: ["main", "article", ".content"]
-    excludeTags: ["nav", "footer", ".ads"]
-    waitFor: 2000
-    timeout: 10000
-    mobile: false
-    blockAds: true
-    onlyMainContent: true
-    location:
-      country: "US"
-      languages: ["en"]
+
   
 mcpServers:
 #  podio:
