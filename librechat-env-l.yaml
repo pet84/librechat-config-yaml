@@ -83,8 +83,21 @@ endpoints:
       # Recommended: Drop the stop parameter from the request as Openrouter models use a variety of stop tokens.
       dropParams: ['stop']
       modelDisplayLabel: 'OpenRouter'
-      
- 
+
+webSearch:
+  firecrawlApiKey: "${FIRECRAWL_API_KEY}"
+  firecrawlOptions:
+    formats: ["markdown", "rawHtml"]
+    includeTags: ["main", "article", ".content"]
+    excludeTags: ["nav", "footer", ".ads"]
+    waitFor: 2000
+    timeout: 10000
+    mobile: false
+    blockAds: true
+    onlyMainContent: true
+    location:
+      country: "US"
+      languages: ["en"]
   
 mcpServers:
 #  podio:
