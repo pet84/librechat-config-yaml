@@ -79,7 +79,7 @@ endpoints:
         - grok-4
         - grok-3
         - grok-3-mini
-      fetch: true  # Automaticky načte dostupné modely
+        fetch: true  # Automaticky načte dostupné modely
       titleConvo: true
       titleMethod: "completion"
       titleModel: "grok-3-mini"
@@ -106,7 +106,10 @@ endpoints:
       dropParams: ['stop']
       modelDisplayLabel: 'OpenRouter'
 
-
+webSearch:
+  searchProvider: "serper"    # Only use Serper for search
+  scraperType: "firecrawl"    # Only use Firecrawl for scraping
+  rerankerType: "jina"        # Only use Jina for reranking
 
 
   
