@@ -179,6 +179,11 @@ mcpServers:
 #      - supergateway
 #      - --sse
 #      - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/microsoft_onedrive
+
+  microsoft_onedrive:
+    transport: sse
+    url: https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/microsoft_onedrive
+    autoStart: true
 #  Funguje
 #  spotify:
 #    command: npx
