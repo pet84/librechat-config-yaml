@@ -79,7 +79,7 @@ endpoints:
         - grok-4
         - grok-3
         - grok-3-mini
-        fetch: true  # Automaticky načte dostupné modely
+      fetch: true  # Automaticky načte dostupné modely
       titleConvo: true
       titleMethod: "completion"
       titleModel: "grok-3-mini"
@@ -106,10 +106,7 @@ endpoints:
       dropParams: ['stop']
       modelDisplayLabel: 'OpenRouter'
 
-webSearch:
-  searchProvider: "serper"    # Only use Serper for search
-  scraperType: "firecrawl"    # Only use Firecrawl for scraping
-  rerankerType: "jina"        # Only use Jina for reranking
+
 
 
   
@@ -179,35 +176,6 @@ mcpServers:
 #      - supergateway
 #      - --sse
 #      - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/microsoft_onedrive
-
-  microsoft_onedrive:
-    transport: stdio
-    command: npx
-    args:
-      - -y
-      - supergateway
-      - --sse
-      - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/microsoft_onedrive
-    autoStart: true
-
-  todoist:
-    type: stdio
-    command: npx
-    args: [ -y, "@Doist/todoist-mcp" ]
-    env:
-      TODOIST_API_KEY: "${TODOIST_API_KEY}"
-
-  pipedream:
-    type: streamable-http        # (funguje i s "sse", Pipedream umí obojí)
-    url: https://remote.mcp.pipedream.net
-    requiresOAuth: false         # vypni autodetekci OAuth na straně LC
-    headers:
-      Authorization: "Bearer ${PIPEDREAM_ACCESS_TOKEN}"
-      x-pd-project-id: "${PIPEDREAM_PROJECT_ID}"
-      x-pd-environment: "${PIPEDREAM_ENVIRONMENT}"
-      x-pd-external-user-id: "{{LIBRECHAT_USER_ID}}"  # páruje akce s uživatelem
-      x-pd-app-discovery: "true"                      # volitelné, usnadní výběr app
-
 #  Funguje
 #  spotify:
 #    command: npx
