@@ -189,11 +189,37 @@ mcpServers:
       - --sse
       - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/microsoft_onedrive
     autoStart: true
-
+    
+  todoist:
+    type: stdio                 # explicitně, ať je jasno
+    command: npx
+    args:
+      - -y
+      - "@Doist/todoist-mcp"    # ofiko balíček MCP od Doist
+    env:
+      # Buď vlož přímo token (rychlé, ale méně bezpečné):
+      # TODOIST_API_KEY: "tvuj_todoist_token"
+      # Lepší: nechat si ho doplnit uživatelem v UI:
+      TODOIST_API_KEY: "{{TODOIST_API_KEY}}"
+    # Volitelné – umožní vyplnit token až v UI LibreChatu (per-user)
+    customUserVars:
+      TODOIST_API_KEY:
+        title: "Todoist API Token"
+        description: "Získej na https://todoist.com/prefs/integrations → API token"
+    # Volitelné – nechá inicializaci až po zadání tokenu v UI
+    startup: false
 
   pipedream:
-    type: sse
-    url: https://mcp.pipedream.net/v2
+    type: streamable-http        # (funguje i s "sse", Pipedream umí obojí)
+    url: https://remote.mcp.pipedream.net
+    requiresOAuth: false         # vypni autodetekci OAuth na straně LC
+    headers:
+      Authorization: "Bearer ${PIPEDREAM_ACCESS_TOKEN}"
+      x-pd-project-id: "${PIPEDREAM_PROJECT_ID}"
+      x-pd-environment: "${PIPEDREAM_ENVIRONMENT}"
+      x-pd-external-user-id: "{{LIBRECHAT_USER_ID}}"  # páruje akce s uživatelem
+      x-pd-app-discovery: "true"                      # volitelné, usnadní výběr app
+
 #  Funguje
 #  spotify:
 #    command: npx
