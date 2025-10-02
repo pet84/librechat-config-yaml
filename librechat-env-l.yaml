@@ -1,6 +1,8 @@
 version: 1.2.8
 cache: true
 interface:
+  agents: true
+  presets: false
   runCode: false
   customWelcome: "Vítej, {{user.name}} 👋 Jsem Airis ⚡"
   termsOfService:
