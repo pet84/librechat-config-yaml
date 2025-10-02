@@ -190,24 +190,13 @@ mcpServers:
       - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/microsoft_onedrive
     autoStart: true
     
+mcpServers:
   todoist:
-    type: stdio                 # explicitně, ať je jasno
+    type: stdio
     command: npx
-    args:
-      - -y
-      - "@Doist/todoist-mcp"    # ofiko balíček MCP od Doist
+    args: [ -y, "@Doist/todoist-mcp" ]
     env:
-      # Buď vlož přímo token (rychlé, ale méně bezpečné):
-      # TODOIST_API_KEY: "tvuj_todoist_token"
-      # Lepší: nechat si ho doplnit uživatelem v UI:
-      TODOIST_API_KEY: "{{TODOIST_API_KEY}}"
-    # Volitelné – umožní vyplnit token až v UI LibreChatu (per-user)
-    customUserVars:
-      TODOIST_API_KEY:
-        title: "Todoist API Token"
-        description: "Získej na https://todoist.com/prefs/integrations → API token"
-    # Volitelné – nechá inicializaci až po zadání tokenu v UI
-    startup: false
+      TODOIST_API_KEY: "${TODOIST_API_KEY}"
 
   pipedream:
     type: streamable-http        # (funguje i s "sse", Pipedream umí obojí)
