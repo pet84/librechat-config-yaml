@@ -121,7 +121,7 @@ endpoints:
 
   
 mcpServers:
-  make:
+  mcp_make:
     type: sse
     url: "https://eu1.make.com/mcp/api/v1/u/7b2a27fb-e42b-439b-a18d-6173595c2a9b/sse"
 #  podio:
