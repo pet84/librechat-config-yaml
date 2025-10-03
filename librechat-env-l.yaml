@@ -107,9 +107,11 @@ endpoints:
       # Recommended: Drop the stop parameter from the request as Openrouter models use a variety of stop tokens.
       dropParams: ['stop']
       modelDisplayLabel: 'OpenRouter'
-    - dify:
-      apiKey: $DIFY_API_KEY   # klíč si schovej do .env
-      baseURL: "https://api.dify.ai/v1"
+    - name: 'Dify'
+      apiKey: '${DIFY_API_KEY}'
+      baseURL: 'https://api.dify.ai/v1'
+      # models tu nemusíš psát, protože Dify si model řeší samo
+      modelDisplayLabel: 'Dify Agent'
 
 
 
