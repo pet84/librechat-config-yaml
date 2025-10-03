@@ -108,13 +108,13 @@ endpoints:
       dropParams: ['stop']
       modelDisplayLabel: 'OpenRouter'
     # Dify endpoint (NOVÝ!)
-    - name: 'Dify'
+    - name: 'Specialista-Airis'
       apiKey: '${DIFY_API_KEY}'
       baseURL: 'https://dify-peach.vercel.app/v1'
       models:
-        default: ['dify']
+        default: ['Specialista-Airis']
       titleConvo: true
-      modelDisplayLabel: 'Dify Agent'
+      modelDisplayLabel: 'Specialista-Airis'
 
 
 
@@ -145,6 +145,7 @@ mcpServers:
       - supergateway
       - --sse
       - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/google_calendar
+    global: false 
 
 #  google_sheets:
 #    command: npx
@@ -170,12 +171,17 @@ mcpServers:
       - supergateway
       - --sse
       - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/api_bible
-  mcp_make:
-    command: npx
-    args:
-      - -y
-      - mcp-remote
-      - "https://eu1.make.com/mcp/api/v1/u/7b2a27fb-e42b-439b-a18d-6173595c2a9b/sse"
+    global: false
+
+    
+#    fnefunguje :(    
+#    mcp_make:
+#      command: npx
+#     args:
+#       - -y
+#       - mcp-remote
+#       - "https://eu1.make.com/mcp/api/v1/u/#klič#/sse"
+  
 
 #  google_forms:
 #    command: npx
