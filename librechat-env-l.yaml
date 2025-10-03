@@ -121,8 +121,6 @@ endpoints:
 
   
 mcpServers:
-  mcp:
-
 #  podio:
 #    command: npx
 #    args:
@@ -183,7 +181,6 @@ mcpServers:
 #       - -y
 #       - mcp-remote
 #       - "https://eu1.make.com/mcp/api/v1/u/#klič#/sse"
- 
   
 
 #  google_forms:
