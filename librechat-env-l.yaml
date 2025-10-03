@@ -107,6 +107,9 @@ endpoints:
       # Recommended: Drop the stop parameter from the request as Openrouter models use a variety of stop tokens.
       dropParams: ['stop']
       modelDisplayLabel: 'OpenRouter'
+    - dify:
+      apiKey: $DIFY_API_KEY   # klíč si schovej do .env
+      baseURL: "https://api.dify.ai/v1"
 
 
 
@@ -162,7 +165,7 @@ mcpServers:
       - supergateway
       - --sse
       - https://mcp.pipedream.net/df5adf48-d9d4-4566-8e88-e78882be0e11/api_bible
-  make:
+  mcp_make:
     command: npx
     args:
       - -y
